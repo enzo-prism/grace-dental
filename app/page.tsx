@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Reviews } from "@/components/reviews"
 import {
   doctor,
   insuranceInNetwork,
@@ -53,7 +54,8 @@ export default function Page() {
               type="video/mp4"
             />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-br from-background/60 via-background/70 to-background/95" />
+          <div className="absolute inset-0 bg-gradient-to-br from-background/75 via-background/75 to-background/95" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-transparent" />
           <div className="absolute inset-0 opacity-70">
             <div className="bg-primary/10 absolute -top-24 -left-24 size-80 rounded-full blur-3xl" />
             <div className="bg-primary/5 absolute -right-32 top-24 size-[28rem] rounded-full blur-3xl" />
@@ -61,7 +63,7 @@ export default function Page() {
         </div>
 
         <Container className="py-14 sm:py-20">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl rounded-3xl bg-background/75 p-6 shadow-lg ring-1 ring-black/10 supports-backdrop-filter:backdrop-blur-md sm:p-8">
             <div className="relative mb-6 inline-flex">
               <div className="bg-white ring-black/10 shadow-xs inline-flex rounded-2xl p-4 ring-1">
                 <Image
@@ -86,11 +88,11 @@ export default function Page() {
             <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
               Personalized dental care in {siteConfig.locationShort}
             </h1>
-            <p className="text-muted-foreground mt-4 text-base leading-relaxed sm:text-lg">
+            <p className="mt-4 text-base leading-relaxed text-foreground/80 sm:text-lg">
               {siteConfig.description} Our focus is comprehensive dentistry in a
               welcoming environment—so you always feel comfortable and informed.
             </p>
-            <p className="mt-3 text-sm font-semibold tracking-tight">
+            <p className="mt-3 text-sm font-semibold tracking-tight text-foreground/80">
               {valuesHeadline}
             </p>
 
@@ -114,7 +116,10 @@ export default function Page() {
 
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {values.map((item) => (
-              <Card key={item.title} className="bg-background/60">
+              <Card
+                key={item.title}
+                className="bg-background/80 supports-backdrop-filter:backdrop-blur-sm"
+              >
                 <CardHeader className="gap-2">
                   <div className="bg-primary/10 text-primary flex size-10 items-center justify-center rounded-xl">
                     <item.icon className="size-5" aria-hidden="true" />
@@ -246,6 +251,8 @@ export default function Page() {
           </div>
         </Container>
       </section>
+
+      <Reviews />
 
       <section className="py-14 sm:py-20">
         <Container>
