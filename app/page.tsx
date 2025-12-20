@@ -49,7 +49,7 @@ export default function Page() {
             preload="auto"
           >
             <source
-              src="https://res.cloudinary.com/dhqpqfw6w/video/upload/v1766199853/YTDown.com_YouTube_Laguna-de-Santa-Rosa-Drone-Footage-Sonom_Media_xlsMoO1Bdxo_001_1080p_rtzhgb.mp4"
+              src="https://res.cloudinary.com/dhqpqfw6w/video/upload/v1766199979/drone_shot_fvcf6j.mp4"
               type="video/mp4"
             />
           </video>
