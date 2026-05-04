@@ -3,6 +3,7 @@ import Link from "next/link"
 import { siteConfig } from "@/lib/site"
 import { BookAppointmentButton } from "@/components/book-appointment-button"
 import { Container } from "@/components/container"
+import { GoogleMapsButton } from "@/components/google-maps-button"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -94,6 +95,7 @@ function SiteFooter() {
             </CardHeader>
             <CardContent className="flex flex-col gap-3 sm:flex-row lg:flex-col">
               <BookAppointmentButton />
+              <GoogleMapsButton />
               <Button asChild variant="outline">
                 <Link href="/contact">Contact Us</Link>
               </Button>

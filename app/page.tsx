@@ -3,6 +3,7 @@ import Image from "next/image"
 
 import { BookAppointmentButton } from "@/components/book-appointment-button"
 import { Container } from "@/components/container"
+import { GoogleMapsButton } from "@/components/google-maps-button"
 import { MiniReviews } from "@/components/mini-reviews"
 import { SectionHeading } from "@/components/section-heading"
 import { Button } from "@/components/ui/button"
@@ -27,11 +28,6 @@ import { siteConfig } from "@/lib/site"
 import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
 
 export default function Page() {
-  const addressLine = `${siteConfig.address.street}, ${siteConfig.address.city}, ${siteConfig.address.state} ${siteConfig.address.zip}`
-  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    addressLine
-  )}`
-
   return (
     <div>
       <section className="relative overflow-hidden border-b">
@@ -301,11 +297,7 @@ export default function Page() {
 
                 <div className="flex flex-wrap gap-3">
                   <BookAppointmentButton />
-                  <Button asChild variant="outline">
-                    <a href={mapsHref} target="_blank" rel="noreferrer">
-                      Get Directions
-                    </a>
-                  </Button>
+                  <GoogleMapsButton />
                   <Button asChild variant="outline">
                     <Link href="/forms/new-patient">New Patient Form</Link>
                   </Button>

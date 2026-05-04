@@ -4,24 +4,27 @@ import { GoogleMapsIcon } from "@/components/google-maps-icon"
 import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/lib/site"
 
-function GoogleReviewButton({
+function GoogleMapsButton({
   variant = "outline",
   size = "default",
   className,
-}: Pick<React.ComponentProps<typeof Button>, "variant" | "size" | "className">) {
+  label = "Open in Maps",
+}: Pick<React.ComponentProps<typeof Button>, "variant" | "size" | "className"> & {
+  label?: string
+}) {
   return (
     <Button asChild variant={variant} size={size} className={className}>
       <a
-        href={siteConfig.googleReviewHref}
+        href={siteConfig.googleMapsHref}
         target="_blank"
         rel="noreferrer"
-        aria-label="Leave a Google review for Grace Dental"
+        aria-label="Open Grace Dental in Google Maps"
       >
         <GoogleMapsIcon className="size-4" />
-        Leave a Google review
+        {label}
       </a>
     </Button>
   )
 }
 
-export { GoogleReviewButton }
+export { GoogleMapsButton }

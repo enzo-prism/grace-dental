@@ -12,6 +12,7 @@ export const siteConfig = {
     phoneHref: "tel:+17075398762",
     email: "gracedentalsantarosa@gmail.com",
   },
+  googleMapsHref: "https://maps.app.goo.gl/AxjNx5uqKRbShV397",
   googleReviewHref:
     "https://www.google.com/maps/place//data=!4m3!3m2!1s0x808447cea0376135:0xb361e8804d432e1f!12e1?source=g.page.m._&laa=merchant-review-solicitation",
   address: {

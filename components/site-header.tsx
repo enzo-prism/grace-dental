@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { siteConfig } from "@/lib/site"
 import { BookAppointmentButton } from "@/components/book-appointment-button"
+import { GoogleMapsIcon } from "@/components/google-maps-icon"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/container"
 import {
@@ -41,11 +42,6 @@ const headerNavItems = siteConfig.nav.filter(
 )
 
 function SiteHeader() {
-  const addressLine = `${siteConfig.address.street}, ${siteConfig.address.city}, ${siteConfig.address.state} ${siteConfig.address.zip}`
-  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    addressLine
-  )}`
-
   return (
     <header className="bg-background/80 supports-backdrop-filter:backdrop-blur-sm sticky top-0 z-40 border-b">
       <a
@@ -134,9 +130,9 @@ function SiteHeader() {
                 </a>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <a href={mapsHref} target="_blank" rel="noreferrer">
-                  <MapPinIcon />
-                  Directions
+                <a href={siteConfig.googleMapsHref} target="_blank" rel="noreferrer">
+                  <GoogleMapsIcon />
+                  Open in Maps
                 </a>
               </DropdownMenuItem>
             </DropdownMenuContent>

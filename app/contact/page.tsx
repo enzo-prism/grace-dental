@@ -4,6 +4,7 @@ import Link from "next/link"
 import { BookAppointmentButton } from "@/components/book-appointment-button"
 import { ContactForm } from "@/components/contact-form"
 import { Container } from "@/components/container"
+import { GoogleMapsButton } from "@/components/google-maps-button"
 import { PageHero } from "@/components/page-hero"
 import { Button } from "@/components/ui/button"
 import {
@@ -23,11 +24,6 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
-  const addressLine = `${siteConfig.address.street}, ${siteConfig.address.city}, ${siteConfig.address.state} ${siteConfig.address.zip}`
-  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    addressLine
-  )}`
-
   return (
     <div>
       <PageHero
@@ -108,11 +104,7 @@ export default function ContactPage() {
                   <Button asChild variant="outline">
                     <a href={`mailto:${siteConfig.contact.email}`}>Email us</a>
                   </Button>
-                  <Button asChild variant="outline">
-                    <a href={mapsHref} target="_blank" rel="noreferrer">
-                      Get directions
-                    </a>
-                  </Button>
+                  <GoogleMapsButton />
                   <Button asChild variant="outline">
                     <Link href="/forms/new-patient">New Patient Form</Link>
                   </Button>
