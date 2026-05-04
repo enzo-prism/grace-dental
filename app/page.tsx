@@ -51,16 +51,16 @@ export default function Page() {
               type="video/mp4"
             />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-br from-background/75 via-background/75 to-background/95" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-transparent" />
-          <div className="absolute inset-0 opacity-70">
+          <div className="absolute inset-0 bg-gradient-to-br from-background/35 via-background/20 to-background/55" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/75 via-background/35 to-transparent" />
+          <div className="absolute inset-0 opacity-45">
             <div className="bg-primary/10 absolute -top-24 -left-24 size-80 rounded-full blur-3xl" />
             <div className="bg-primary/5 absolute -right-32 top-24 size-[28rem] rounded-full blur-3xl" />
           </div>
         </div>
 
         <Container className="py-14 sm:py-20">
-          <div className="max-w-2xl rounded-3xl bg-background/80 p-6 shadow-lg ring-1 ring-border supports-backdrop-filter:backdrop-blur-md sm:p-8">
+          <div className="max-w-2xl rounded-3xl bg-background/70 p-6 shadow-lg ring-1 ring-border supports-backdrop-filter:backdrop-blur-md sm:p-8">
             <div className="relative mb-6 inline-flex">
               <div className="inline-flex rounded-2xl bg-white p-4 shadow-xs ring-1 ring-border">
                 <Image
