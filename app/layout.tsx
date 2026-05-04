@@ -12,11 +12,34 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://grace-dental.vercel.app"),
   title: {
     default: `${siteConfig.name} | ${siteConfig.locationShort}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  openGraph: {
+    title: `${siteConfig.name} | ${siteConfig.locationShort}`,
+    description: siteConfig.description,
+    url: "/",
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1024,
+        height: 585,
+        alt: `${siteConfig.name} logo`,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | ${siteConfig.locationShort}`,
+    description: siteConfig.description,
+    images: ["/opengraph-image.png"],
+  },
 }
 
 export const viewport: Viewport = {
