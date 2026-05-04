@@ -66,7 +66,7 @@ export default function ContactPage() {
                   <div className="flex items-center gap-2">
                     <PhoneIcon className="text-muted-foreground size-4" />
                     <a
-                      className="hover:text-foreground text-muted-foreground underline-offset-4 hover:underline"
+                      className="premium-link"
                       href={siteConfig.contact.phoneHref}
                     >
                       {siteConfig.contact.phoneDisplay}
@@ -75,7 +75,7 @@ export default function ContactPage() {
                   <div className="flex items-center gap-2">
                     <MailIcon className="text-muted-foreground size-4" />
                     <a
-                      className="hover:text-foreground text-muted-foreground underline-offset-4 hover:underline"
+                      className="premium-link"
                       href={`mailto:${siteConfig.contact.email}`}
                     >
                       {siteConfig.contact.email}

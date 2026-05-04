@@ -107,7 +107,7 @@ export default function Page() {
             {values.map((item) => (
               <Card
                 key={item.title}
-                className="bg-background/80 supports-backdrop-filter:backdrop-blur-sm"
+                className="premium-card-hover bg-background/80 supports-backdrop-filter:backdrop-blur-sm"
               >
                 <CardHeader className="gap-2">
                   <div className="bg-primary/10 text-primary flex size-10 items-center justify-center rounded-xl">
@@ -139,7 +139,7 @@ export default function Page() {
 
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {serviceCategories.map((category) => (
-              <Card key={category.title} className="transition-shadow hover:shadow-md">
+              <Card key={category.title} className="premium-card-hover">
                 <CardHeader className="gap-2">
                   <div className="bg-primary/10 text-primary flex size-10 items-center justify-center rounded-xl">
                     <category.icon className="size-5" aria-hidden="true" />
@@ -153,7 +153,7 @@ export default function Page() {
                       <li key={service.slug} className="flex items-center gap-2">
                         <span className="bg-primary/40 size-1.5 rounded-full" />
                         <Link
-                          className="hover:text-foreground underline-offset-4 hover:underline"
+                          className="premium-link"
                           href={`/services/${service.slug}`}
                         >
                           {service.name}
@@ -264,7 +264,7 @@ export default function Page() {
                   <div className="flex items-center gap-2">
                     <PhoneIcon className="text-muted-foreground size-4" />
                     <a
-                      className="hover:text-foreground text-muted-foreground underline-offset-4 hover:underline"
+                      className="premium-link"
                       href={siteConfig.contact.phoneHref}
                     >
                       {siteConfig.contact.phoneDisplay}
@@ -273,7 +273,7 @@ export default function Page() {
                   <div className="flex items-center gap-2">
                     <MailIcon className="text-muted-foreground size-4" />
                     <a
-                      className="hover:text-foreground text-muted-foreground underline-offset-4 hover:underline"
+                      className="premium-link"
                       href={`mailto:${siteConfig.contact.email}`}
                     >
                       {siteConfig.contact.email}

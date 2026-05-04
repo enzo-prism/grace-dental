@@ -30,7 +30,7 @@ function MiniReviews() {
             </div>
             <Link
               href="/reviews"
-              className="text-muted-foreground hover:text-foreground mt-1 inline-flex text-sm underline-offset-4 hover:underline"
+              className="premium-link mt-1 inline-flex text-sm"
             >
               Read patient reviews
             </Link>

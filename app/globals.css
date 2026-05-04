@@ -132,6 +132,12 @@
   select {
     touch-action: manipulation;
   }
+  .premium-link {
+    @apply text-muted-foreground underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline;
+  }
+  .premium-card-hover {
+    @apply hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 hover:ring-primary/20;
+  }
 }
 
 body:has([data-registration-page]) > header,

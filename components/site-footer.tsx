@@ -51,14 +51,14 @@ function SiteFooter() {
                     </div>
                   </div>
                   <a
-                    className="text-muted-foreground hover:text-foreground flex items-center gap-2 underline-offset-4 hover:underline"
+                    className="premium-link flex items-center gap-2"
                     href={siteConfig.contact.phoneHref}
                   >
                     <PhoneIcon className="size-4" />
                     {siteConfig.contact.phoneDisplay}
                   </a>
                   <a
-                    className="text-muted-foreground hover:text-foreground flex items-center gap-2 underline-offset-4 hover:underline"
+                    className="premium-link flex items-center gap-2"
                     href={`mailto:${siteConfig.contact.email}`}
                   >
                     <MailIcon className="size-4" />
@@ -128,7 +128,7 @@ function FooterLinkGroup({
         {items.map((item) => (
           <li key={item.href}>
             <Link
-              className="text-muted-foreground hover:text-foreground underline-offset-4 hover:underline"
+              className="premium-link"
               href={item.href}
             >
               {item.title}

@@ -253,7 +253,7 @@ function AppointmentPicker({
                 role="radio"
                 aria-checked={selected}
                 className={cn(
-                  "rounded-xl border bg-background p-3 text-center shadow-xs transition-colors hover:bg-muted focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none",
+                  "rounded-xl border bg-background p-3 text-center shadow-xs transition-[background-color,border-color,box-shadow,transform,color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-md hover:shadow-primary/10 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none",
                   selected && "border-primary bg-primary/10 text-primary"
                 )}
                 onClick={() => onDateSelect(dateKey)}
@@ -293,7 +293,7 @@ function AppointmentPicker({
                 aria-checked={selected}
                 disabled={!selectedDate}
                 className={cn(
-                  "rounded-xl border bg-background px-3 py-2.5 text-sm font-medium shadow-xs transition-colors hover:bg-muted focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+                  "rounded-xl border bg-background px-3 py-2.5 text-sm font-medium shadow-xs transition-[background-color,border-color,box-shadow,transform,color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-md hover:shadow-primary/10 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-xs",
                   selected && "border-primary bg-primary/10 text-primary"
                 )}
                 onClick={() => onTimeSelect(time)}
@@ -393,7 +393,7 @@ function RegistrationForm() {
             aria-hidden="true"
           >
             <div
-              className="bg-primary h-full rounded-full transition-all duration-300"
+              className="bg-primary h-full rounded-full transition-[width] duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -448,7 +448,7 @@ function RegistrationForm() {
                         role="radio"
                         aria-checked={selected}
                         className={cn(
-                          "border-border bg-background hover:bg-muted flex min-h-12 items-center justify-between rounded-xl border px-4 py-3 text-left text-sm font-medium shadow-xs transition-colors focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none",
+                          "border-border bg-background flex min-h-12 items-center justify-between rounded-xl border px-4 py-3 text-left text-sm font-medium shadow-xs transition-[background-color,border-color,box-shadow,transform,color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-md hover:shadow-primary/10 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none",
                           selected && "border-primary bg-primary/10 text-primary"
                         )}
                         onClick={() => {
