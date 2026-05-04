@@ -23,8 +23,8 @@ export default function InsurancePage() {
           { title: "Insurance" },
         ]}
         eyebrow="Insurance"
-        title="Insurance at Grace Dental"
-        description="Here are the insurance plans we are in-network with. Please note: we must verify that your plan type is in network."
+        title="Insurance"
+        description="We’ll help verify your plan."
       />
 
       <section className="py-14 sm:py-20">
@@ -33,9 +33,6 @@ export default function InsurancePage() {
             <Card>
               <CardHeader>
                 <CardTitle>In-network plans</CardTitle>
-                <CardDescription>
-                  If you don’t see your plan listed, call our office and we’ll help.
-                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
@@ -50,14 +47,10 @@ export default function InsurancePage() {
 
             <Card className="bg-muted/20">
               <CardHeader>
-                <CardTitle>Verification note</CardTitle>
+                <CardTitle>Need verification?</CardTitle>
                 <CardDescription>{insuranceNote}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3 text-sm">
-                <p className="text-muted-foreground">
-                  Insurance networks can vary by plan type—even within the same provider.
-                  We’ll verify eligibility and benefits before your appointment.
-                </p>
                 <div className="flex flex-wrap gap-3">
                   <Button asChild>
                     <a href={siteConfig.contact.phoneHref}>

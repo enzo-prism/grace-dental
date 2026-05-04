@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 
+import { BookAppointmentButton } from "@/components/book-appointment-button"
 import { Container } from "@/components/container"
 import { PageHero } from "@/components/page-hero"
 import { Button } from "@/components/ui/button"
@@ -22,25 +23,34 @@ export default function FormsPage() {
         ]}
         eyebrow="Forms"
         title="Forms & resources"
-        description="Use these forms to request an appointment or prepare for your first visit."
+        description="Book online or print a form."
       />
 
       <section className="py-14 sm:py-20">
         <Container>
-          <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
-            <Card className="flex flex-col">
+          <div className="grid gap-6 lg:grid-cols-3 lg:items-stretch">
+            <Card className="flex flex-col bg-primary text-primary-foreground">
               <CardHeader>
-                <CardTitle>Contact form</CardTitle>
-                <CardDescription>
-                  Send a request and we’ll follow up to confirm availability.
+                <CardTitle className="text-primary-foreground">
+                  Book appointment
+                </CardTitle>
+                <CardDescription className="text-primary-foreground/80">
+                  One question at a time.
                 </CardDescription>
               </CardHeader>
               <CardContent className="mt-auto flex flex-wrap gap-3">
+                <BookAppointmentButton variant="secondary" />
+              </CardContent>
+            </Card>
+
+            <Card className="flex flex-col">
+              <CardHeader>
+                <CardTitle>Questions before booking?</CardTitle>
+                <CardDescription>We’re happy to help.</CardDescription>
+              </CardHeader>
+              <CardContent className="mt-auto flex flex-wrap gap-3">
                 <Button asChild>
-                  <Link href="/contact#request">Request appointment</Link>
-                </Button>
-                <Button asChild variant="outline">
-                  <Link href="/contact">Contact details</Link>
+                  <Link href="/contact">Contact the office</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -48,9 +58,7 @@ export default function FormsPage() {
             <Card className="flex flex-col">
               <CardHeader>
                 <CardTitle>New patient form</CardTitle>
-                <CardDescription>
-                  A printable form you can fill out and bring to your appointment.
-                </CardDescription>
+                <CardDescription>Prefer paper? Print this.</CardDescription>
               </CardHeader>
               <CardContent className="mt-auto flex flex-wrap gap-3">
                 <Button asChild>
@@ -63,11 +71,8 @@ export default function FormsPage() {
             </Card>
           </div>
 
-          <p className="text-muted-foreground mt-8 max-w-3xl text-sm leading-relaxed">
-            For your privacy, please avoid sending sensitive medical information by
-            email. If you have urgent symptoms (severe pain, swelling, trouble
-            breathing, uncontrolled bleeding), call 911 or go to your nearest
-            emergency room.
+          <p className="text-muted-foreground mt-8 max-w-3xl text-sm">
+            For urgent symptoms, call 911 or visit an emergency room.
           </p>
         </Container>
       </section>

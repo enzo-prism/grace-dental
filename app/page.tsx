@@ -1,7 +1,10 @@
 import Link from "next/link"
 import Image from "next/image"
 
+import { BookAppointmentButton } from "@/components/book-appointment-button"
 import { Container } from "@/components/container"
+import { MiniReviews } from "@/components/mini-reviews"
+import { SectionHeading } from "@/components/section-heading"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -21,13 +24,7 @@ import {
 } from "@/lib/content"
 import { serviceCategories } from "@/lib/services"
 import { siteConfig } from "@/lib/site"
-import {
-  ArrowRightIcon,
-  ClockIcon,
-  MailIcon,
-  MapPinIcon,
-  PhoneIcon,
-} from "lucide-react"
+import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
 
 export default function Page() {
   const addressLine = `${siteConfig.address.street}, ${siteConfig.address.city}, ${siteConfig.address.state} ${siteConfig.address.zip}`
@@ -63,9 +60,9 @@ export default function Page() {
         </div>
 
         <Container className="py-14 sm:py-20">
-          <div className="max-w-2xl rounded-3xl bg-background/75 p-6 shadow-lg ring-1 ring-black/10 supports-backdrop-filter:backdrop-blur-md sm:p-8">
+          <div className="max-w-2xl rounded-3xl bg-background/80 p-6 shadow-lg ring-1 ring-border supports-backdrop-filter:backdrop-blur-md sm:p-8">
             <div className="relative mb-6 inline-flex">
-              <div className="bg-white ring-black/10 shadow-xs inline-flex rounded-2xl p-4 ring-1">
+              <div className="inline-flex rounded-2xl bg-white p-4 shadow-xs ring-1 ring-border">
                 <Image
                   src={siteConfig.logo.src}
                   alt={siteConfig.logo.alt}
@@ -79,29 +76,25 @@ export default function Page() {
               <div className="absolute -bottom-3 left-4 z-10">
                 <Badge
                   variant="secondary"
-                  className="bg-white/90 text-foreground ring-black/10 shadow-xs backdrop-blur-sm ring-1"
+                  className="bg-background/90 text-foreground shadow-xs backdrop-blur-sm ring-1 ring-border"
                 >
                   New patients welcome
                 </Badge>
               </div>
             </div>
             <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
-              Personalized dental care in {siteConfig.locationShort}
+              Calm, personal dental care in {siteConfig.locationShort}
             </h1>
             <p className="mt-4 text-base leading-relaxed text-foreground/80 sm:text-lg">
-              {siteConfig.description} Our focus is comprehensive dentistry in a
-              welcoming environment—so you always feel comfortable and informed.
+              Thoughtful dentistry from a team that keeps visits simple,
+              comfortable, and clear.
             </p>
             <p className="mt-3 text-sm font-semibold tracking-tight text-foreground/80">
               {valuesHeadline}
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Button asChild size="lg">
-                <Link href="/contact#request">
-                  Request Appointment <ArrowRightIcon data-icon="inline-end" />
-                </Link>
-              </Button>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <BookAppointmentButton size="lg" />
               <Button asChild variant="outline" size="lg">
                 <a href={siteConfig.contact.phoneHref}>
                   <PhoneIcon data-icon="inline-start" />
@@ -133,26 +126,26 @@ export default function Page() {
         </Container>
       </section>
 
+      <MiniReviews />
+
       <section className="py-14 sm:py-20">
         <Container>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight">Services</h2>
-              <p className="text-muted-foreground mt-2 max-w-2xl text-sm sm:text-base">
-                Cosmetic, general, and restorative dentistry—designed around your
-                goals and long-term oral health.
-              </p>
-            </div>
-            <Button asChild variant="outline" className="w-fit">
-              <Link href="/services">View all services</Link>
-            </Button>
-          </div>
+          <SectionHeading
+            eyebrow="Care Menu"
+            title="Services"
+            description="Preventive, cosmetic, and restorative care."
+            actions={
+              <Button asChild variant="outline" className="w-fit">
+                <Link href="/services">View all services</Link>
+              </Button>
+            }
+          />
 
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {serviceCategories.map((category) => (
-              <Card key={category.title}>
+              <Card key={category.title} className="transition-shadow hover:shadow-md">
                 <CardHeader className="gap-2">
-                  <div className="bg-muted text-foreground flex size-10 items-center justify-center rounded-xl">
+                  <div className="bg-primary/10 text-primary flex size-10 items-center justify-center rounded-xl">
                     <category.icon className="size-5" aria-hidden="true" />
                   </div>
                   <CardTitle className="text-base">{category.title}</CardTitle>
@@ -162,7 +155,7 @@ export default function Page() {
                   <ul className="text-muted-foreground space-y-1 text-sm">
                     {category.services.map((service) => (
                       <li key={service.slug} className="flex items-center gap-2">
-                        <span className="bg-border size-1.5 rounded-full" />
+                        <span className="bg-primary/40 size-1.5 rounded-full" />
                         <Link
                           className="hover:text-foreground underline-offset-4 hover:underline"
                           href={`/services/${service.slug}`}
@@ -196,18 +189,16 @@ export default function Page() {
                   <div className="grid gap-1">
                     <CardTitle>{doctor.name}</CardTitle>
                     <CardDescription>
-                      Experience personalized dental care at Grace Dental.
+                      Gentle care, clear options, and strong clinical training.
                     </CardDescription>
                   </div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4 text-sm">
                 <ul className="text-muted-foreground list-disc space-y-2 pl-4">
-                  <li>Loma Linda University School of Dentistry (DDS, 2009)</li>
-                  <li>Master’s Degree in Implant Dentistry (2010)</li>
-                  <li>
-                    3‑year Advanced Education Program in Implant Dentistry (LLU)
-                  </li>
+                  <li>DDS, Loma Linda University</li>
+                  <li>Master’s Degree in Implant Dentistry</li>
+                  <li>Advanced implant training</li>
                   <li>Serving Santa Rosa since 2016</li>
                 </ul>
 
@@ -215,9 +206,7 @@ export default function Page() {
                   <Button asChild>
                     <Link href="/about">Meet your dental team</Link>
                   </Button>
-                  <Button asChild variant="outline">
-                    <Link href="/contact#request">Request appointment</Link>
-                  </Button>
+                  <BookAppointmentButton variant="outline" label="Book appointment" />
                 </div>
               </CardContent>
             </Card>
@@ -226,7 +215,7 @@ export default function Page() {
               <CardHeader>
                 <CardTitle>Insurance</CardTitle>
                 <CardDescription>
-                  In-network with several plans. Call us to confirm details.
+                  We can help verify your plan.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -252,7 +241,7 @@ export default function Page() {
         </Container>
       </section>
 
-      <Reviews />
+      <Reviews limit={3} />
 
       <section className="py-14 sm:py-20">
         <Container>
@@ -261,7 +250,7 @@ export default function Page() {
               <CardHeader>
                 <CardTitle>Visit Grace Dental</CardTitle>
                 <CardDescription>
-                  Conveniently located in {siteConfig.locationShort}.
+                  Find us in {siteConfig.locationShort}.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -311,12 +300,7 @@ export default function Page() {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <Button asChild>
-                    <Link href="/contact#request">
-                      Request Appointment{" "}
-                      <ArrowRightIcon data-icon="inline-end" />
-                    </Link>
-                  </Button>
+                  <BookAppointmentButton />
                   <Button asChild variant="outline">
                     <a href={mapsHref} target="_blank" rel="noreferrer">
                       Get Directions
@@ -335,14 +319,14 @@ export default function Page() {
                   What to expect
                 </CardTitle>
                 <CardDescription className="text-primary-foreground/80">
-                  A clear plan and a comfortable visit—no surprises.
+                  Simple, clear, comfortable.
                 </CardDescription>
               </CardHeader>
               <CardContent className="grid gap-4">
                 <div className="grid gap-1">
-                  <div className="font-medium">1) Quick intake</div>
+                  <div className="font-medium">1) Book online</div>
                   <div className="text-primary-foreground/80 text-sm">
-                    We’ll confirm your goals and medical history.
+                    Share the essentials one question at a time.
                   </div>
                 </div>
                 <div className="grid gap-1">

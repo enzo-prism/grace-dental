@@ -25,10 +25,23 @@ function PageHero({
   className,
 }: PageHeroProps) {
   return (
-    <section className={cn("bg-background relative overflow-hidden border-b", className)}>
-      <Container className="py-14 sm:py-20">
-        <div className="max-w-2xl">
-          <div className="bg-white ring-black/10 shadow-xs mb-5 inline-flex rounded-2xl p-3 ring-1 sm:p-4">
+    <section
+      className={cn(
+        "from-muted/30 via-background to-background relative overflow-hidden border-b bg-gradient-to-br",
+        className
+      )}
+    >
+      <div
+        className="bg-primary/10 absolute -right-28 -top-28 size-80 rounded-full blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="bg-primary/5 absolute -bottom-32 left-8 size-72 rounded-full blur-3xl"
+        aria-hidden="true"
+      />
+      <Container className="relative py-14 sm:py-20">
+        <div className="max-w-3xl rounded-3xl bg-background/80 p-6 shadow-xs ring-1 ring-border supports-backdrop-filter:backdrop-blur-md sm:p-8">
+          <div className="mb-5 inline-flex rounded-2xl bg-white p-3 shadow-xs ring-1 ring-border sm:p-4">
             <Image
               src={siteConfig.logo.src}
               alt={siteConfig.logo.alt}
@@ -52,7 +65,7 @@ function PageHero({
             </div>
           ) : null}
           {actions ? (
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               {actions}
             </div>
           ) : null}

@@ -122,7 +122,21 @@
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: color-mix(in oklch, var(--primary) 18%, transparent);
   }
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    touch-action: manipulation;
+  }
+}
+
+body:has([data-registration-page]) > header,
+body:has([data-registration-page]) > footer {
+  display: none;
 }
 
 @media print {

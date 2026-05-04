@@ -1,8 +1,7 @@
 import Link from "next/link"
 
 import { siteConfig } from "@/lib/site"
-import { buildSearchIndex } from "@/lib/search"
-import { SiteSearch } from "@/components/site-search"
+import { BookAppointmentButton } from "@/components/book-appointment-button"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/container"
 import {
@@ -12,14 +11,40 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { MailIcon, MapPinIcon, MenuIcon, PhoneIcon } from "lucide-react"
+import {
+  ClipboardListIcon,
+  HomeIcon,
+  MailIcon,
+  MapPinIcon,
+  MenuIcon,
+  MessageCircleIcon,
+  PhoneIcon,
+  ShieldCheckIcon,
+  SparklesIcon,
+  StarIcon,
+  UsersRoundIcon,
+  type LucideIcon,
+} from "lucide-react"
+
+const navIcons: Record<(typeof siteConfig.nav)[number]["href"], LucideIcon> = {
+  "/": HomeIcon,
+  "/services": SparklesIcon,
+  "/about": UsersRoundIcon,
+  "/reviews": StarIcon,
+  "/insurance": ShieldCheckIcon,
+  "/forms": ClipboardListIcon,
+  "/contact": MessageCircleIcon,
+}
+
+const headerNavItems = siteConfig.nav.filter(
+  (item) => item.href !== "/insurance" && item.href !== "/forms"
+)
 
 function SiteHeader() {
   const addressLine = `${siteConfig.address.street}, ${siteConfig.address.city}, ${siteConfig.address.state} ${siteConfig.address.zip}`
   const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     addressLine
   )}`
-  const searchItems = buildSearchIndex()
 
   return (
     <header className="bg-background/80 supports-backdrop-filter:backdrop-blur-sm sticky top-0 z-40 border-b">
@@ -40,39 +65,38 @@ function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
-          {siteConfig.nav.map((item) => (
-            <Button key={item.href} asChild variant="ghost" size="sm">
-              <Link href={item.href}>{item.title}</Link>
-            </Button>
-          ))}
+          {headerNavItems.map((item) => {
+            const Icon = navIcons[item.href]
+
+            return (
+              <Button key={item.href} asChild variant="ghost" size="sm">
+                <Link href={item.href}>
+                  <Icon data-icon="inline-start" aria-hidden="true" />
+                  {item.title}
+                </Link>
+              </Button>
+            )
+          })}
         </nav>
 
         <div className="flex items-center gap-2">
-          <SiteSearch items={searchItems} />
-          <Button asChild variant="outline" size="icon" className="sm:hidden">
-            <a href={siteConfig.contact.phoneHref} aria-label="Call Grace Dental">
-              <PhoneIcon className="size-4" aria-hidden="true" />
-            </a>
-          </Button>
-          <Button asChild variant="outline" size="sm" className="hidden sm:flex">
-            <a href={siteConfig.contact.phoneHref}>
-              <PhoneIcon data-icon="inline-start" />
-              {siteConfig.contact.phoneDisplay}
-            </a>
-          </Button>
-          <Button asChild size="sm">
-            <Link href="/contact#request">
-              <span className="sm:hidden">Schedule</span>
-              <span className="hidden sm:inline">Request Appointment</span>
-            </Link>
-          </Button>
+          <BookAppointmentButton
+            size="sm"
+            label="Book"
+            className="h-11 px-3 sm:hidden"
+          />
+          <BookAppointmentButton
+            size="sm"
+            label="Book Appointment"
+            className="hidden sm:inline-flex"
+          />
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
                 variant="outline"
                 size="icon"
-                className="md:hidden"
+                className="size-11 md:hidden"
                 aria-label="Open menu"
               >
                 <MenuIcon className="size-4" aria-hidden="true" />
@@ -84,11 +108,18 @@ function SiteHeader() {
                 {siteConfig.locationShort}
               </div>
               <DropdownMenuSeparator />
-              {siteConfig.nav.map((item) => (
-                <DropdownMenuItem key={item.href} asChild>
-                  <Link href={item.href}>{item.title}</Link>
-                </DropdownMenuItem>
-              ))}
+              {headerNavItems.map((item) => {
+                const Icon = navIcons[item.href]
+
+                return (
+                  <DropdownMenuItem key={item.href} asChild>
+                    <Link href={item.href}>
+                      <Icon />
+                      {item.title}
+                    </Link>
+                  </DropdownMenuItem>
+                )
+              })}
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
                 <a href={siteConfig.contact.phoneHref}>

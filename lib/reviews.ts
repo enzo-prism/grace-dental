@@ -6,6 +6,35 @@ export type Review = {
 
 export const reviews: Review[] = [
   {
+    name: "Diana O'Donohue",
+    rating: 5,
+    body:
+      "It’s been a long time since I had a dentist that made me feel so confident and relaxed. She takes time to explain everything and reassure you. And this was just my first visit.",
+  },
+  {
+    name: "Trish Nugent",
+    rating: 5,
+    body:
+      "Always a good experience. Friendly and highly competent. Dr. Ji and staff are great.",
+  },
+  {
+    name: "David Sam",
+    rating: 5,
+    body:
+      "Dr. Ji and her team are great! They are kind, do great work, and always make the experience very pleasant.",
+  },
+  {
+    name: "Elden McFarland",
+    rating: 5,
+    body:
+      "Dr. Ji is the most competent dentist I have ever worked with. She is excellent at painless work, friendly, and easy to talk to.",
+  },
+  {
+    name: "kayla williams",
+    rating: 5,
+    body: "Staff are very sweet and Dr. Tingjen is very kind and knowledgeable.",
+  },
+  {
     name: "Barrett Eichstaedt",
     rating: 5,
     body:

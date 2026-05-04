@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 
+import { BookAppointmentButton } from "@/components/book-appointment-button"
 import { Container } from "@/components/container"
 import { PageHero } from "@/components/page-hero"
 import { Button } from "@/components/ui/button"
@@ -22,13 +23,11 @@ export default function ServicesPage() {
           { title: "Services" },
         ]}
         eyebrow="Services"
-        title="Comprehensive dentistry, tailored to you"
-        description="From cleanings and exams to restorative care and cosmetic treatments, we’ll help you choose the right next step for your smile."
+        title="Dental services"
+        description="Simple care options for your smile."
         actions={
           <>
-            <Button asChild>
-              <Link href="/contact#request">Request Appointment</Link>
-            </Button>
+            <BookAppointmentButton />
             <Button asChild variant="outline">
               <Link href="/insurance">Insurance</Link>
             </Button>
@@ -46,7 +45,6 @@ export default function ServicesPage() {
                     <category.icon className="size-5" aria-hidden="true" />
                   </div>
                   <CardTitle>{category.title}</CardTitle>
-                  <CardDescription>{category.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="pt-0">
                   <div className="flex flex-col gap-2">
@@ -68,15 +66,11 @@ export default function ServicesPage() {
 
           <Card className="mt-10">
             <CardHeader>
-              <CardTitle>Not sure what you need?</CardTitle>
-              <CardDescription>
-                Tell us what’s going on and we’ll help you figure out the best next step.
-              </CardDescription>
+              <CardTitle>Not sure where to start?</CardTitle>
+              <CardDescription>Book online and we’ll help with the next step.</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-3">
-              <Button asChild>
-                <Link href="/contact#request">Request an appointment</Link>
-              </Button>
+              <BookAppointmentButton />
               <Button asChild variant="outline">
                 <Link href="/about">Meet the team</Link>
               </Button>

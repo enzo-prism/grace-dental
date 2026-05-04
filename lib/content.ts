@@ -17,25 +17,25 @@ export type IconItem = {
 export const valuesHeadline = "Quality. Compassion. Connection."
 
 export const aboutMission =
-  "At Grace Dental, we believe that your oral health journey is as unique as you are. Led by Dr. Tingjen Ji, our team is committed to delivering personalized, compassionate care that exceeds expectations. With a focus on comprehensive dentistry, we create a welcoming environment where your individual needs are our top priority. Our mission is to promote overall health and well-being, starting with your smile."
+  "Warm, personalized dental care led by Dr. Tingjen Ji in Santa Rosa."
 
 export const values: IconItem[] = [
   {
     title: "Quality",
     description:
-      "Comprehensive dentistry delivered with high standards, thoughtful planning, and attention to detail.",
+      "Thoughtful care with strong clinical standards.",
     icon: BadgeCheckIcon,
   },
   {
     title: "Compassion",
     description:
-      "A warm, comforting atmosphere and care that moves at your pace—especially if dentistry feels overwhelming.",
+      "A calm visit that moves at your pace.",
     icon: HandHeartIcon,
   },
   {
     title: "Connection",
     description:
-      "Genuine relationships built on trust and open communication, so you always understand your options.",
+      "Clear options and honest conversation.",
     icon: UsersIcon,
   },
 ]

@@ -12,6 +12,8 @@ export const siteConfig = {
     phoneHref: "tel:+17075398762",
     email: "gracedentalsantarosa@gmail.com",
   },
+  googleReviewHref:
+    "https://www.google.com/maps/place//data=!4m3!3m2!1s0x808447cea0376135:0xb361e8804d432e1f!12e1?source=g.page.m._&laa=merchant-review-solicitation",
   address: {
     street: "170 Farmer Ln, STE 1",
     city: "Santa Rosa",
@@ -31,6 +33,7 @@ export const siteConfig = {
     { title: "Home", href: "/" },
     { title: "Services", href: "/services" },
     { title: "About", href: "/about" },
+    { title: "Reviews", href: "/reviews" },
     { title: "Insurance", href: "/insurance" },
     { title: "Forms", href: "/forms" },
     { title: "Contact", href: "/contact" },

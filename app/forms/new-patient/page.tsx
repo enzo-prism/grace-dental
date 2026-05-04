@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 
+import { BookAppointmentButton } from "@/components/book-appointment-button"
 import { Container } from "@/components/container"
 import { PageHero } from "@/components/page-hero"
 import { PrintButton } from "@/components/print-button"
@@ -32,9 +33,7 @@ export default function NewPatientFormPage() {
         actions={
           <>
             <PrintButton />
-            <Button asChild>
-              <Link href="/contact#request">Request Appointment</Link>
-            </Button>
+            <BookAppointmentButton />
           </>
         }
       />
@@ -221,11 +220,12 @@ export default function NewPatientFormPage() {
             <CardHeader>
               <CardTitle>Need help?</CardTitle>
               <CardDescription>
-                Call or email us and we’ll be happy to assist.
+                Book online, or call/email us and we’ll be happy to assist.
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-3">
-              <Button asChild>
+              <BookAppointmentButton />
+              <Button asChild variant="outline">
                 <a href={siteConfig.contact.phoneHref}>
                   Call {siteConfig.contact.phoneDisplay}
                 </a>

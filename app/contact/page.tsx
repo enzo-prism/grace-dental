@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 
+import { BookAppointmentButton } from "@/components/book-appointment-button"
 import { ContactForm } from "@/components/contact-form"
 import { Container } from "@/components/container"
 import { PageHero } from "@/components/page-hero"
@@ -18,7 +19,7 @@ import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Request an appointment, ask a question, or call Grace Dental in Santa Rosa, CA.",
+    "Contact Grace Dental in Santa Rosa, CA, or book an appointment online.",
 }
 
 export default function ContactPage() {
@@ -36,7 +37,15 @@ export default function ContactPage() {
         ]}
         eyebrow="Contact"
         title="Get in touch"
-        description="Request an appointment, ask a question, or contact us by phone or email."
+        description="Book online, call, or send a quick question."
+        actions={
+          <>
+            <BookAppointmentButton />
+            <Button asChild variant="outline">
+              <a href={siteConfig.contact.phoneHref}>Call now</a>
+            </Button>
+          </>
+        }
       />
 
       <section className="py-14 sm:py-20">
@@ -45,9 +54,6 @@ export default function ContactPage() {
             <Card>
               <CardHeader>
                 <CardTitle>Contact details</CardTitle>
-                <CardDescription>
-                  Call, email, or visit us in Santa Rosa.
-                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4 text-sm">
                 <div className="space-y-2">
@@ -122,10 +128,8 @@ export default function ContactPage() {
 
             <Card id="request" className="scroll-mt-24">
               <CardHeader>
-                <CardTitle>Request an appointment</CardTitle>
-                <CardDescription>
-                  Send a quick note and we’ll follow up to confirm.
-                </CardDescription>
+                <CardTitle>Have a question?</CardTitle>
+                <CardDescription>Send a quick note.</CardDescription>
               </CardHeader>
               <CardContent>
                 <ContactForm />

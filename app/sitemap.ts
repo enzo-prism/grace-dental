@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${baseUrl}/`, lastModified },
     { url: `${baseUrl}/about`, lastModified },
+    { url: `${baseUrl}/reviews`, lastModified },
     { url: `${baseUrl}/services`, lastModified },
     ...services.map((service) => ({
       url: `${baseUrl}/services/${service.slug}`,
@@ -20,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: `${baseUrl}/insurance`, lastModified },
     { url: `${baseUrl}/forms`, lastModified },
+    { url: `${baseUrl}/registration`, lastModified },
     { url: `${baseUrl}/forms/new-patient`, lastModified },
     { url: `${baseUrl}/contact`, lastModified },
   ]

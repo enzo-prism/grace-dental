@@ -13,7 +13,12 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import {
   Select,
@@ -24,7 +29,6 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { siteConfig } from "@/lib/site"
 
 function ContactForm() {
   const [open, setOpen] = React.useState(false)
@@ -103,24 +107,24 @@ function ContactForm() {
             <FieldLabel htmlFor="contact-message">
               How can we help? (optional)
             </FieldLabel>
+            <FieldDescription>
+              Add only what we need to know.
+            </FieldDescription>
             <Textarea
               id="contact-message"
               name="message"
-              placeholder="Preferred days/times, what you’d like help with, and anything we should know."
+              placeholder="How can we help?"
             />
           </Field>
         </FieldGroup>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-muted-foreground text-xs">
-            Submitting this form doesn’t book an appointment yet—our team will
-            follow up to confirm. For urgent issues,{" "}
-            <a href={siteConfig.contact.phoneHref}>
-              call {siteConfig.contact.phoneDisplay}
-            </a>
-            .
-          </p>
-          <Button type="submit">Send Request</Button>
+          <FieldDescription className="text-xs">
+            Appointments start with <a href="/registration">online booking</a>.
+          </FieldDescription>
+          <Button type="submit" className="w-full sm:w-auto sm:shrink-0">
+            Send Request
+          </Button>
         </div>
       </form>
 
@@ -129,8 +133,7 @@ function ContactForm() {
           <AlertDialogHeader>
             <AlertDialogTitle>Request received</AlertDialogTitle>
             <AlertDialogDescription>
-              Thanks—our team will follow up to confirm availability. If this is
-              urgent, please <a href={siteConfig.contact.phoneHref}>call us</a>.
+              Thanks. We’ll follow up soon.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
