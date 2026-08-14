@@ -36,6 +36,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { recordAppointmentFormLead } from "@/lib/ga4"
 import { cn } from "@/lib/utils"
 
 type RegistrationValues = {
@@ -351,6 +352,7 @@ function RegistrationForm() {
 
     if (isLastStep) {
       setSubmitted(true)
+      recordAppointmentFormLead()
       return
     }
 
