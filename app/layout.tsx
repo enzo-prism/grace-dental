@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next"
 import { Geist_Mono, Inter } from "next/font/google"
+import Script from "next/script"
 
+import { Ga4LeadTracker } from "@/components/ga4-lead-tracker"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
+import { GA4_MEASUREMENT_ID } from "@/lib/ga4"
 import { siteConfig } from "@/lib/site"
 
 import "./globals.css"
@@ -75,9 +78,22 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA4_MEASUREMENT_ID}');
+          `}
+        </Script>
         <SiteHeader />
         <main id="main-content">{children}</main>
         <SiteFooter />
+        <Ga4LeadTracker />
       </body>
     </html>
   )

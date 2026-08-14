@@ -29,6 +29,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { recordContactFormLead } from "@/lib/ga4"
 
 function ContactForm() {
   const [open, setOpen] = React.useState(false)
@@ -37,6 +38,7 @@ function ContactForm() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setOpen(true)
+    recordContactFormLead()
     event.currentTarget.reset()
     setReason(undefined)
   }
