@@ -30,22 +30,78 @@ import {
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { recordContactFormLead } from "@/lib/ga4"
+import { siteConfig } from "@/lib/site"
 
 function ContactForm() {
   const [open, setOpen] = React.useState(false)
   const [reason, setReason] = React.useState<string | undefined>()
+  const [submitting, setSubmitting] = React.useState(false)
+  const [submitError, setSubmitError] = React.useState("")
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    setOpen(true)
-    recordContactFormLead()
-    event.currentTarget.reset()
-    setReason(undefined)
+    if (submitting) return
+    setSubmitting(true)
+    setSubmitError("")
+
+    const formData = new FormData(event.currentTarget)
+    const payload = {
+      name: String(formData.get("name") ?? ""),
+      email: String(formData.get("email") ?? ""),
+      phone: String(formData.get("phone") ?? ""),
+      reason: reason ?? "",
+      message: String(formData.get("message") ?? ""),
+      company_website: String(formData.get("company_website") ?? ""),
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+      if (!response.ok) {
+        let message =
+          "Something went wrong sending your request. Please try again."
+        try {
+          const data = (await response.json()) as { error?: string }
+          if (data.error) message = data.error
+        } catch {
+          if (response.status === 503) {
+            message =
+              "Email service is unavailable right now. Please call (707) 539-8762."
+          }
+        }
+        setSubmitError(message)
+        return
+      }
+      setOpen(true)
+      recordContactFormLead()
+      event.currentTarget.reset()
+      setReason(undefined)
+    } catch {
+      setSubmitError(
+        "Something went wrong sending your request. Please try again or call (707) 539-8762."
+      )
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
     <>
       <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="hidden" aria-hidden="true">
+          <label htmlFor="contact-website">
+            Leave this field blank
+            <Input
+              id="contact-website"
+              name="company_website"
+              autoComplete="off"
+              tabIndex={-1}
+            />
+          </label>
+        </div>
         <FieldGroup>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field>
@@ -120,12 +176,28 @@ function ContactForm() {
           </Field>
         </FieldGroup>
 
+        {submitError ? (
+          <p role="alert" className="text-sm text-destructive">
+            {submitError}{" "}
+            <a
+              href={siteConfig.contact.phoneHref}
+              className="font-medium underline underline-offset-4"
+            >
+              Call {siteConfig.contact.phoneDisplay}
+            </a>
+          </p>
+        ) : null}
+
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <FieldDescription className="text-xs">
             Appointments start with <a href="/registration">online booking</a>.
           </FieldDescription>
-          <Button type="submit" className="w-full sm:w-auto sm:shrink-0">
-            Send Request
+          <Button
+            type="submit"
+            disabled={submitting}
+            className="w-full sm:w-auto sm:shrink-0"
+          >
+            {submitting ? "Sending…" : "Send Request"}
           </Button>
         </div>
       </form>

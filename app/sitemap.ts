@@ -1,13 +1,10 @@
 import type { MetadataRoute } from "next"
 
 import { services } from "@/lib/services"
-
-function getBaseUrl() {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-}
+import { siteUrl } from "@/lib/site"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = getBaseUrl()
+  const baseUrl = siteUrl
   const lastModified = new Date()
 
   return [

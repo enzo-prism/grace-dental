@@ -6,7 +6,7 @@ import { Ga4LeadTracker } from "@/components/ga4-lead-tracker"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { GA4_MEASUREMENT_ID } from "@/lib/ga4"
-import { siteConfig } from "@/lib/site"
+import { siteConfig, siteUrl } from "@/lib/site"
 
 import "./globals.css"
 
@@ -15,7 +15,10 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://grace-dental.vercel.app"),
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: `${siteConfig.name} | ${siteConfig.locationShort}`,
     template: `%s | ${siteConfig.name}`,
@@ -54,6 +57,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Dentist",
   name: siteConfig.name,
+  url: siteUrl,
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,
@@ -62,8 +66,26 @@ const jsonLd = {
     postalCode: siteConfig.address.zip,
     addressCountry: "US",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 38.4405,
+    longitude: -122.7141,
+    description: "Approximate coordinates for Santa Rosa, CA",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+    opens: "08:00",
+    closes: "17:00",
+  },
+  sameAs: [siteConfig.googleReviewHref],
   telephone: siteConfig.contact.phoneHref.replace("tel:", ""),
   email: siteConfig.contact.email,
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    reviewCount: "71",
+  },
 }
 
 export default function RootLayout({

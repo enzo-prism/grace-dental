@@ -1,5 +1,23 @@
+export const DEFAULT_SITE_URL = "https://grace-dental.vercel.app"
+
+function resolveSiteUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "")
+  if (raw) {
+    return raw
+  }
+  if (process.env.NODE_ENV !== "production") {
+    console.warn(
+      `[site] NEXT_PUBLIC_SITE_URL is not set; falling back to ${DEFAULT_SITE_URL} for development.`
+    )
+  }
+  return DEFAULT_SITE_URL
+}
+
+export const siteUrl = resolveSiteUrl()
+
 export const siteConfig = {
   name: "Grace Dental",
+  siteUrl,
   description:
     "Personalized, compassionate dentistry led by Dr. Tingjen Ji in Santa Rosa, CA.",
   locationShort: "Santa Rosa, CA",
@@ -15,6 +33,7 @@ export const siteConfig = {
   googleMapsHref: "https://maps.app.goo.gl/AxjNx5uqKRbShV397",
   googleReviewHref:
     "https://www.google.com/maps/place//data=!4m3!3m2!1s0x808447cea0376135:0xb361e8804d432e1f!12e1?source=g.page.m._&laa=merchant-review-solicitation",
+  zocdocHref: "https://www.zocdoc.com/practice/tingjen-ji-dds-msd-117902",
   address: {
     street: "170 Farmer Ln, STE 1",
     city: "Santa Rosa",

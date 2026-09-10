@@ -101,6 +101,17 @@ export default function RegistrationPage() {
 
         <section className="mx-auto w-full max-w-xl" aria-label="Book appointment form">
           <RegistrationForm />
+          <p className="text-muted-foreground mt-4 text-center text-sm">
+            Prefer to book instantly?{" "}
+            <a
+              href={siteConfig.zocdocHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              Use Zocdoc
+            </a>
+          </p>
         </section>
       </main>
     </div>

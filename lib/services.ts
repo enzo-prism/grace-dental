@@ -81,7 +81,7 @@ export const services = [
       "Thin porcelain shells bonded to the front of teeth to refine shape, color, and spacing.",
     icon: CrownIcon,
     seo: {
-      title: "Porcelain Veneers",
+      title: "Porcelain Veneers in Santa Rosa, CA",
       description:
         "Learn how porcelain veneers can refine tooth shape and color, what to expect, and how to care for them at Grace Dental in Santa Rosa.",
     },
@@ -138,7 +138,7 @@ export const services = [
       "Professional whitening to safely lift stains and brighten your smile.",
     icon: SparklesIcon,
     seo: {
-      title: "Teeth Whitening",
+      title: "Teeth Whitening in Santa Rosa, CA",
       description:
         "Professional teeth whitening options, what to expect, and aftercare tips at Grace Dental in Santa Rosa.",
     },
@@ -191,7 +191,7 @@ export const services = [
       "Comprehensive exams to evaluate teeth, gums, and overall oral health.",
     icon: ClipboardCheckIcon,
     seo: {
-      title: "Dental Exams",
+      title: "Dental Exams in Santa Rosa, CA",
       description:
         "What happens during a dental exam, why exams matter, and how to schedule at Grace Dental in Santa Rosa.",
     },
@@ -240,7 +240,7 @@ export const services = [
       "Professional cleanings to remove plaque and tartar and support gum health.",
     icon: BrushIcon,
     seo: {
-      title: "Dental Cleaning",
+      title: "Dental Cleaning in Santa Rosa, CA",
       description:
         "Learn what to expect during a dental cleaning and why routine cleanings help protect your smile at Grace Dental in Santa Rosa.",
     },
@@ -288,7 +288,7 @@ export const services = [
       "Tooth-colored restorations to repair cavities and minor tooth damage.",
     icon: CircleDotIcon,
     seo: {
-      title: "Fillings",
+      title: "Fillings in Santa Rosa, CA",
       description:
         "Learn about tooth-colored fillings, what to expect, and aftercare at Grace Dental in Santa Rosa.",
     },
@@ -336,7 +336,7 @@ export const services = [
       "Crowns protect damaged teeth; bridges can replace missing teeth for a complete smile.",
     icon: CrownIcon,
     seo: {
-      title: "Crowns and Bridges",
+      title: "Crowns and Bridges in Santa Rosa, CA",
       description:
         "Learn about dental crowns and bridges, what to expect, and aftercare at Grace Dental in Santa Rosa.",
     },
@@ -385,7 +385,7 @@ export const services = [
       "Relieve pain and save a tooth by treating infection or inflammation inside the tooth.",
     icon: SyringeIcon,
     seo: {
-      title: "Root Canal Therapy",
+      title: "Root Canal Therapy in Santa Rosa, CA",
       description:
         "Root canal therapy explained: symptoms, treatment steps, and aftercare at Grace Dental in Santa Rosa.",
     },
@@ -434,7 +434,7 @@ export const services = [
       "Removal of a tooth that can’t be saved or needs to be removed for your health.",
     icon: BoneIcon,
     seo: {
-      title: "Dental Extractions",
+      title: "Dental Extractions in Santa Rosa, CA",
       description:
         "When extractions are needed, what to expect, and healing tips at Grace Dental in Santa Rosa.",
     },
@@ -483,7 +483,7 @@ export const services = [
       "A strong, natural-feeling option for replacing missing teeth with an implant-supported restoration.",
     icon: HammerIcon,
     seo: {
-      title: "Dental Implants",
+      title: "Dental Implants in Santa Rosa, CA",
       description:
         "Learn how dental implants work, the timeline, and what to expect at Grace Dental in Santa Rosa.",
     },
@@ -536,7 +536,7 @@ export const services = [
       "Custom night guards to protect teeth from clenching and grinding while you sleep.",
     icon: MoonIcon,
     seo: {
-      title: "Night Guards",
+      title: "Night Guards in Santa Rosa, CA",
       description:
         "Custom night guards for grinding/clenching: benefits, fit, and care at Grace Dental in Santa Rosa.",
     },

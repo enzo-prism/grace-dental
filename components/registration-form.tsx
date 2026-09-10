@@ -37,6 +37,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { recordAppointmentFormLead } from "@/lib/ga4"
+import { siteConfig } from "@/lib/site"
 import { cn } from "@/lib/utils"
 
 type RegistrationValues = {
@@ -321,6 +322,9 @@ function RegistrationForm() {
   const [stepIndex, setStepIndex] = React.useState(0)
   const [touched, setTouched] = React.useState(false)
   const [submitted, setSubmitted] = React.useState(false)
+  const [submitting, setSubmitting] = React.useState(false)
+  const [submitError, setSubmitError] = React.useState("")
+  const [website, setWebsite] = React.useState("")
 
   const selectableDates = React.useMemo(() => getSelectableDates(), [])
   const currentStep = steps[stepIndex]
@@ -344,20 +348,52 @@ function RegistrationForm() {
     setValues((current) => ({ ...current, [id]: value }))
   }
 
-  function goNext() {
+  async function goNext() {
     const nextError = getError(currentStep, values)
     setTouched(true)
 
     if (nextError) return
 
-    if (isLastStep) {
-      setSubmitted(true)
-      recordAppointmentFormLead()
+    if (!isLastStep) {
+      setStepIndex((current) => current + 1)
+      setTouched(false)
       return
     }
 
-    setStepIndex((current) => current + 1)
-    setTouched(false)
+    if (submitting) return
+    setSubmitting(true)
+    setSubmitError("")
+
+    try {
+      const response = await fetch("/api/appointment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...values, company_website: website }),
+      })
+      if (!response.ok) {
+        let message =
+          "Something went wrong sending your request. Please try again."
+        try {
+          const data = (await response.json()) as { error?: string }
+          if (data.error) message = data.error
+        } catch {
+          if (response.status === 503) {
+            message =
+              "Email service is unavailable right now. Please call (707) 539-8762."
+          }
+        }
+        setSubmitError(message)
+        return
+      }
+      setSubmitted(true)
+      recordAppointmentFormLead()
+    } catch {
+      setSubmitError(
+        "Something went wrong sending your request. Please try again or call (707) 539-8762."
+      )
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   function goBack() {
@@ -375,6 +411,8 @@ function RegistrationForm() {
     setStepIndex(0)
     setTouched(false)
     setSubmitted(false)
+    setSubmitError("")
+    setWebsite("")
   }
 
   return (
@@ -414,6 +452,19 @@ function RegistrationForm() {
 
         <CardContent className="pt-6">
           <form onSubmit={handleSubmit} className="grid gap-6">
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="registration-website">
+                Leave this field blank
+                <input
+                  id="registration-website"
+                  name="company_website"
+                  autoComplete="off"
+                  tabIndex={-1}
+                  value={website}
+                  onChange={(event) => setWebsite(event.target.value)}
+                />
+              </label>
+            </div>
             <Field data-invalid={!!error}>
               <FieldLabel htmlFor={currentStep.id} className="sr-only">
                 {currentStep.title}
@@ -517,22 +568,39 @@ function RegistrationForm() {
               )}
             </Field>
 
+            {submitError ? (
+              <p role="alert" className="text-sm text-destructive">
+                {submitError}{" "}
+                <a
+                  href={siteConfig.contact.phoneHref}
+                  className="font-medium underline underline-offset-4"
+                >
+                  Call {siteConfig.contact.phoneDisplay}
+                </a>
+              </p>
+            ) : null}
+
             <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
               <Button
                 type="button"
                 variant="ghost"
                 onClick={goBack}
-                disabled={stepIndex === 0}
+                disabled={stepIndex === 0 || submitting}
                 className="w-full sm:w-auto"
               >
                 <ArrowLeftIcon data-icon="inline-start" />
                 Back
               </Button>
-              <Button type="submit" size="lg" className="w-full sm:w-auto">
+              <Button
+                type="submit"
+                size="lg"
+                disabled={submitting}
+                className="w-full sm:w-auto"
+              >
                 {isLastStep ? (
                   <>
                     <CalendarCheckIcon data-icon="inline-start" />
-                    Book Appointment
+                    {submitting ? "Sending…" : "Book Appointment"}
                   </>
                 ) : (
                   <>

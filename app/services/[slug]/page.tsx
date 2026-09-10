@@ -56,8 +56,25 @@ export default async function ServiceDetailPage({
   const related = getRelatedServices(service)
   const category = serviceCategoryMeta[service.categoryId]
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: service.sections.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  }
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <PageHero
         breadcrumbs={[
           { title: "Home", href: "/" },
@@ -86,8 +103,10 @@ export default async function ServiceDetailPage({
               <CardHeader>
                 <CardTitle>Overview</CardTitle>
               </CardHeader>
-              <CardContent className="text-muted-foreground text-sm leading-relaxed">
-                <p>{service.shortDescription}</p>
+              <CardContent className="text-muted-foreground space-y-3 text-sm leading-relaxed">
+                {service.sections.overview.map((paragraph) => (
+                  <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                ))}
               </CardContent>
             </Card>
 
@@ -97,7 +116,7 @@ export default async function ServiceDetailPage({
               </CardHeader>
               <CardContent className="pt-0">
                 <ul className="text-muted-foreground space-y-2 text-sm">
-                  {service.sections.whoItsFor.slice(0, 3).map((item) => (
+                  {service.sections.whoItsFor.map((item) => (
                     <li key={item} className="flex items-start gap-2">
                       <span className="bg-border mt-2 size-1.5 shrink-0 rounded-full" />
                       <span>{item}</span>
@@ -113,7 +132,7 @@ export default async function ServiceDetailPage({
               </CardHeader>
               <CardContent className="pt-0">
                 <ol className="text-muted-foreground space-y-2 text-sm">
-                  {service.sections.whatToExpect.slice(0, 3).map((step, index) => (
+                  {service.sections.whatToExpect.map((step, index) => (
                     <li key={step} className="flex items-start gap-3">
                       <span className="bg-muted text-foreground mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-md text-xs font-medium">
                         {index + 1}
@@ -127,11 +146,27 @@ export default async function ServiceDetailPage({
 
             <Card>
               <CardHeader>
+                <CardTitle>Aftercare</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <ul className="text-muted-foreground space-y-2 text-sm">
+                  {service.sections.aftercare.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="bg-border mt-2 size-1.5 shrink-0 rounded-full" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
                 <CardTitle>FAQ</CardTitle>
               </CardHeader>
               <CardContent className="pt-0">
                 <Accordion type="single" collapsible>
-                  {service.sections.faqs.slice(0, 2).map((faq) => (
+                  {service.sections.faqs.map((faq) => (
                     <AccordionItem key={faq.question} value={faq.question}>
                       <AccordionTrigger>{faq.question}</AccordionTrigger>
                       <AccordionContent className="text-muted-foreground leading-relaxed">
@@ -158,11 +193,24 @@ export default async function ServiceDetailPage({
                   Book online and we’ll follow up.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="flex flex-wrap gap-3">
-                <BookAppointmentButton variant="secondary" label="Book appointment" />
-                <Button asChild variant="outline">
-                  <a href={siteConfig.contact.phoneHref}>Call office</a>
-                </Button>
+              <CardContent className="flex flex-col gap-3">
+                <div className="flex flex-wrap gap-3">
+                  <BookAppointmentButton variant="secondary" label="Book appointment" />
+                  <Button asChild variant="outline">
+                    <a href={siteConfig.contact.phoneHref}>Call office</a>
+                  </Button>
+                </div>
+                <p className="text-primary-foreground/80 text-sm">
+                  Prefer to book instantly?{" "}
+                  <a
+                    href={siteConfig.zocdocHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium underline underline-offset-4"
+                  >
+                    Use Zocdoc
+                  </a>
+                </p>
               </CardContent>
             </Card>
 
