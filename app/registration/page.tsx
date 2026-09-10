@@ -24,8 +24,8 @@ export default function RegistrationPage() {
           <Button asChild variant="ghost" size="sm" className="-ml-2">
             <Link href="/" aria-label="Back to Grace Dental home">
               <ArrowLeftIcon data-icon="inline-start" />
-              <span className="hidden sm:inline">Back to site</span>
-              <span className="sm:hidden">Back</span>
+              <span className="hidden md:inline">Back to site</span>
+              <span className="md:hidden">Back</span>
             </Link>
           </Button>
 
@@ -59,42 +59,10 @@ export default function RegistrationPage() {
         </div>
       </header>
 
-      <main className="mx-auto grid w-full max-w-6xl gap-8 px-4 py-8 sm:px-6 sm:py-10 lg:min-h-[calc(100vh-4rem)] lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8">
-        <section className="mx-auto w-full max-w-xl min-w-0 text-center lg:mx-0 lg:text-left">
-          <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
-            Request an appointment.
-          </h1>
-          <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-foreground/80 sm:text-lg lg:mx-0">
-            Pick a preferred date and time. We’ll review and confirm.
-          </p>
-
-          <ol className="mx-auto mt-8 flex max-w-lg flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-foreground/75 lg:mx-0 lg:justify-start">
-            <li className="flex items-center gap-2"><span className="font-semibold text-foreground/50 tabular-nums" aria-hidden="true">01</span>~2 minutes</li>
-            <li className="flex items-center gap-2"><span className="font-semibold text-foreground/50 tabular-nums" aria-hidden="true">02</span>No long forms</li>
-            <li className="flex min-w-0 items-center gap-2"><span className="font-semibold text-foreground/50 tabular-nums" aria-hidden="true">03</span><span className="min-w-0">Help:{" "}
-              <a
-                href={siteConfig.contact.phoneHref}
-                className="font-medium underline underline-offset-4"
-              >
-                {siteConfig.contact.phoneDisplay}
-              </a></span>
-            </li>
-          </ol>
-        </section>
-
-        <section className="mx-auto w-full max-w-xl min-w-0" aria-label="Book appointment form">
+      <main className="mx-auto w-full max-w-6xl px-0 py-6 sm:py-10 lg:min-h-[calc(100vh-4rem)]">
+        <h1 className="sr-only">Book an appointment at Grace Dental</h1>
+        <section aria-label="Book appointment form">
           <RegistrationForm />
-          <p className="mt-4 text-center text-sm text-foreground/70">
-            Prefer to book instantly?{" "}
-            <a
-              href={siteConfig.zocdocHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              Use Zocdoc
-            </a>
-          </p>
         </section>
       </main>
     </div>
