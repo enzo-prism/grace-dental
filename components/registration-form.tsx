@@ -255,12 +255,12 @@ function AppointmentPicker({
                 role="radio"
                 aria-checked={selected}
                 className={cn(
-                  "rounded-xl border bg-background p-3 text-center shadow-xs transition-[background-color,border-color,box-shadow,transform,color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-md hover:shadow-primary/10 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none",
+                  "rounded-xl border bg-background p-3 text-center shadow-xs transition-[background-color,border-color] duration-200 ease-out hover:border-primary/40 hover:bg-primary/5 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none motion-reduce:transition-none",
                   selected && "border-primary bg-primary/10 text-primary"
                 )}
                 onClick={() => onDateSelect(dateKey)}
               >
-                <span className="block text-xs text-muted-foreground">
+                <span className="block text-xs text-foreground/60">
                   {weekdayFormatter.format(date)}
                 </span>
                 <span className="block text-lg font-semibold">
@@ -276,7 +276,7 @@ function AppointmentPicker({
         <div className="mb-3 flex items-center justify-between gap-3">
           <div className="text-sm font-medium">Preferred time</div>
           {selectedDateLabel ? (
-            <span className="text-muted-foreground text-xs">{selectedDateLabel}</span>
+            <span className="text-xs text-foreground/60">{selectedDateLabel}</span>
           ) : null}
         </div>
         <div
@@ -295,7 +295,7 @@ function AppointmentPicker({
                 aria-checked={selected}
                 disabled={!selectedDate}
                 className={cn(
-                  "rounded-xl border bg-background px-3 py-2.5 text-sm font-medium shadow-xs transition-[background-color,border-color,box-shadow,transform,color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-md hover:shadow-primary/10 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-xs",
+                  "rounded-xl border bg-background px-3 py-2.5 text-sm font-medium shadow-xs transition-[background-color,border-color] duration-200 ease-out hover:border-primary/40 hover:bg-primary/5 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none motion-reduce:transition-none disabled:cursor-not-allowed disabled:opacity-50",
                   selected && "border-primary bg-primary/10 text-primary"
                 )}
                 onClick={() => onTimeSelect(time)}
@@ -417,13 +417,13 @@ function RegistrationForm() {
 
   return (
     <>
-      <Card className="w-full rounded-3xl">
-        <CardHeader className="gap-4 border-b pb-6">
+      <Card className="w-full min-w-0 rounded-[2rem] p-8 sm:p-10">
+        <CardHeader className="gap-4 border-b p-0 pb-6">
           <div className="flex items-center justify-between gap-4">
-            <div className="text-muted-foreground text-sm font-medium">
+            <div className="text-sm font-medium text-foreground/70">
               Step {stepIndex + 1} of {steps.length}
             </div>
-            <div className="text-muted-foreground flex items-center gap-1.5 text-xs">
+            <div className="flex items-center gap-1.5 text-xs text-foreground/60">
               <ShieldCheckIcon className="size-3.5" aria-hidden="true" />
               Private intake
             </div>
@@ -450,8 +450,8 @@ function RegistrationForm() {
           </div>
         </CardHeader>
 
-        <CardContent className="pt-6">
-          <form onSubmit={handleSubmit} className="grid gap-6">
+        <CardContent className="min-w-0 p-0 pt-6">
+          <form onSubmit={handleSubmit} className="grid min-w-0 gap-6">
             <div className="hidden" aria-hidden="true">
               <label htmlFor="registration-website">
                 Leave this field blank
@@ -501,7 +501,7 @@ function RegistrationForm() {
                         role="radio"
                         aria-checked={selected}
                         className={cn(
-                          "border-border bg-background flex min-h-12 items-center justify-between rounded-xl border px-4 py-3 text-left text-sm font-medium shadow-xs transition-[background-color,border-color,box-shadow,transform,color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-md hover:shadow-primary/10 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none",
+                          "border-border bg-background flex min-h-12 min-w-0 items-center justify-between gap-3 rounded-xl border px-4 py-3 text-left text-sm font-medium shadow-xs transition-[background-color,border-color] duration-200 ease-out hover:border-primary/40 hover:bg-primary/5 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none motion-reduce:transition-none",
                           selected && "border-primary bg-primary/10 text-primary"
                         )}
                         onClick={() => {

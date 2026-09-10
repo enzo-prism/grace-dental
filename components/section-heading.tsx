@@ -1,6 +1,5 @@
 import * as React from "react"
 
-import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
 type SectionHeadingProps = {
@@ -21,26 +20,26 @@ function SectionHeading({
   return (
     <div
       className={cn(
-        "flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between",
+        "flex min-w-0 flex-col gap-5 sm:flex-row sm:items-end sm:justify-between",
         className
       )}
     >
-      <div>
+      <div className="min-w-0 max-w-3xl">
         {eyebrow ? (
-          <Badge variant="secondary" className="mb-3">
-            {eyebrow}
-          </Badge>
+          <p className="font-display text-lg text-primary italic">{eyebrow}</p>
         ) : null}
-        <h2 className="text-2xl font-semibold tracking-tight text-balance">
+        <h2 className="font-display mt-2 text-3xl font-medium tracking-tight text-balance sm:text-4xl">
           {title}
         </h2>
         {description ? (
-          <div className="text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed sm:text-base">
+          <div className="mt-3 max-w-2xl text-base leading-relaxed text-foreground/80 sm:text-lg">
             {description}
           </div>
         ) : null}
       </div>
-      {actions ? <div className="flex shrink-0 flex-wrap gap-3">{actions}</div> : null}
+      {actions ? (
+        <div className="flex min-w-0 shrink-0 flex-wrap gap-3">{actions}</div>
+      ) : null}
     </div>
   )
 }

@@ -35,41 +35,44 @@ export default function ServicesPage() {
         }
       />
 
-      <section className="py-14 sm:py-20">
+      <section className="py-24 sm:py-32 lg:py-40">
         <Container>
-          <div className="grid gap-4 lg:grid-cols-3">
-            {serviceCategories.map((category) => (
-              <Card key={category.title}>
-                <CardHeader className="gap-2">
-                  <div className="bg-muted text-foreground flex size-10 items-center justify-center rounded-xl">
-                    <category.icon className="size-5" aria-hidden="true" />
-                  </div>
-                  <CardTitle>{category.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <div className="flex flex-col gap-2">
-                    {category.services.map((service) => (
+          <div className="grid gap-10 lg:gap-14">
+            {serviceCategories.map((category, index) => (
+              <section key={category.title} aria-label={category.title} className="min-w-0 border-t-2 border-foreground/10 pt-8 sm:pt-10">
+                <div className="flex min-w-0 flex-wrap items-baseline gap-x-4 gap-y-2">
+                  <span className="text-sm font-semibold text-foreground/50 tabular-nums" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <category.icon className="size-5 shrink-0 translate-y-0.5 text-primary" aria-hidden="true" />
+                  <h2 className="min-w-0 text-2xl font-semibold tracking-tight text-balance sm:text-3xl">{category.title}</h2>
+                </div>
+                <ul className="mt-6 divide-y divide-border overflow-hidden rounded-2xl border bg-card">
+                  {category.services.map((service) => (
+                    <li key={service.slug} className="min-w-0">
                       <Button
-                        key={service.slug}
                         asChild
-                        variant="outline"
-                        className="justify-start"
+                        variant="ghost"
+                        className="h-auto min-h-12 w-full justify-between rounded-none px-5 py-4 text-left font-medium motion-reduce:transition-none"
                       >
-                        <Link href={`/services/${service.slug}`}>{service.name}</Link>
+                        <Link href={`/services/${service.slug}`}>
+                          <span className="min-w-0 flex-1 truncate sm:whitespace-normal">{service.name}</span>
+                          <span aria-hidden="true" className="shrink-0 text-foreground/40">→</span>
+                        </Link>
                       </Button>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             ))}
           </div>
 
-          <Card className="mt-10">
-            <CardHeader>
-              <CardTitle>Not sure where to start?</CardTitle>
-              <CardDescription>Book online and we’ll help with the next step.</CardDescription>
+          <Card className="mt-16 rounded-[2rem] p-8 sm:mt-20 sm:p-10 lg:p-12">
+            <CardHeader className="p-0">
+              <CardTitle className="text-2xl sm:text-3xl">Not sure where to start?</CardTitle>
+              <CardDescription className="mt-2 text-base">Book online and we’ll help with the next step.</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-wrap gap-3">
+            <CardContent className="flex flex-wrap gap-3 p-0 pt-6">
               <BookAppointmentButton />
               <Button asChild variant="outline">
                 <Link href="/about">Meet the team</Link>

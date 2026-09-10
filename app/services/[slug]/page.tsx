@@ -96,80 +96,68 @@ export default async function ServiceDetailPage({
         }
       />
 
-      <section className="py-14 sm:py-20">
-        <Container className="grid gap-6 lg:grid-cols-3 lg:items-start">
-          <div className="space-y-6 lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Overview</CardTitle>
+      <section className="py-24 sm:py-32 lg:py-40">
+        <Container className="grid min-w-0 gap-8 lg:grid-cols-3 lg:items-start lg:gap-10">
+          <div className="min-w-0 space-y-8 lg:col-span-2">
+            <Card className="rounded-3xl p-8 sm:p-10">
+              <CardHeader className="p-0">
+                <CardTitle className="text-2xl sm:text-3xl">Overview</CardTitle>
               </CardHeader>
-              <CardContent className="text-muted-foreground space-y-3 text-sm leading-relaxed">
+              <CardContent className="space-y-4 p-0 pt-5 text-sm leading-relaxed text-foreground/80 sm:text-base">
                 {service.sections.overview.map((paragraph) => (
                   <p key={paragraph.slice(0, 48)}>{paragraph}</p>
                 ))}
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Who it helps</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <ul className="text-muted-foreground space-y-2 text-sm">
-                  {service.sections.whoItsFor.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="bg-border mt-2 size-1.5 shrink-0 rounded-full" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            <div className="min-w-0 border-t-2 border-foreground/10 pt-8">
+              <h2 className="text-2xl font-semibold tracking-tight text-balance">Who it helps</h2>
+              <ul className="mt-5 space-y-3 text-sm leading-relaxed text-foreground/80 sm:text-base">
+                {service.sections.whoItsFor.map((item) => (
+                  <li key={item} className="flex min-w-0 items-start gap-3">
+                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                    <span className="min-w-0">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>What to expect</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <ol className="text-muted-foreground space-y-2 text-sm">
-                  {service.sections.whatToExpect.map((step, index) => (
-                    <li key={step} className="flex items-start gap-3">
-                      <span className="bg-muted text-foreground mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-md text-xs font-medium">
-                        {index + 1}
-                      </span>
-                      <span>{step}</span>
-                    </li>
-                  ))}
-                </ol>
-              </CardContent>
-            </Card>
+            <div className="min-w-0 border-t-2 border-foreground/10 pt-8">
+              <h2 className="text-2xl font-semibold tracking-tight text-balance">What to expect</h2>
+              <ol className="mt-5 space-y-4 text-sm leading-relaxed text-foreground/80 sm:text-base">
+                {service.sections.whatToExpect.map((step, index) => (
+                  <li key={step} className="flex min-w-0 items-start gap-4">
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-semibold text-foreground tabular-nums" aria-hidden="true">
+                      {index + 1}
+                    </span>
+                    <span className="min-w-0 pt-0.5">{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Aftercare</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <ul className="text-muted-foreground space-y-2 text-sm">
-                  {service.sections.aftercare.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="bg-border mt-2 size-1.5 shrink-0 rounded-full" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            <div className="min-w-0 border-t-2 border-foreground/10 pt-8">
+              <h2 className="text-2xl font-semibold tracking-tight text-balance">Aftercare</h2>
+              <ul className="mt-5 space-y-3 text-sm leading-relaxed text-foreground/80 sm:text-base">
+                {service.sections.aftercare.map((item) => (
+                  <li key={item} className="flex min-w-0 items-start gap-3">
+                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                    <span className="min-w-0">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>FAQ</CardTitle>
+            <Card className="rounded-2xl p-8 sm:p-10">
+              <CardHeader className="p-0">
+                <CardTitle className="text-2xl">FAQ</CardTitle>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="p-0 pt-4">
                 <Accordion type="single" collapsible>
                   {service.sections.faqs.map((faq) => (
                     <AccordionItem key={faq.question} value={faq.question}>
-                      <AccordionTrigger>{faq.question}</AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground leading-relaxed">
+                      <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
+                      <AccordionContent className="leading-relaxed text-foreground/80">
                         {faq.answer}
                       </AccordionContent>
                     </AccordionItem>
@@ -179,21 +167,21 @@ export default async function ServiceDetailPage({
             </Card>
           </div>
 
-          <div className="space-y-6">
-            <Card className="bg-primary text-primary-foreground overflow-hidden">
-              <CardHeader className="gap-2">
-                <div className="text-primary-foreground/90 flex items-center gap-2">
-                  <service.icon className="size-5" aria-hidden="true" />
-                  <span className="text-sm font-medium">{category.title}</span>
+          <div className="min-w-0 space-y-6">
+            <Card className="bg-primary text-primary-foreground overflow-hidden rounded-[2rem] p-8 sm:p-10">
+              <CardHeader className="gap-2 p-0">
+                <div className="text-primary-foreground/90 flex min-w-0 items-center gap-2">
+                  <service.icon className="size-5 shrink-0" aria-hidden="true" />
+                  <span className="min-w-0 text-sm font-medium">{category.title}</span>
                 </div>
-                <CardTitle className="text-primary-foreground">
+                <CardTitle className="text-primary-foreground text-2xl">
                   Ready?
                 </CardTitle>
                 <CardDescription className="text-primary-foreground/80">
                   Book online and we’ll follow up.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="flex flex-col gap-3">
+              <CardContent className="flex flex-col gap-3 p-0 pt-5">
                 <div className="flex flex-wrap gap-3">
                   <BookAppointmentButton variant="secondary" label="Book appointment" />
                   <Button asChild variant="outline">
@@ -214,27 +202,25 @@ export default async function ServiceDetailPage({
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Related services</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-2">
+            <nav aria-label="Related services" className="min-w-0 overflow-hidden rounded-2xl border bg-card">
+              <h2 className="px-5 pt-5 text-lg font-semibold tracking-tight">Related services</h2>
+              <div className="flex flex-col gap-1 p-3">
                 {related.length ? (
                   related.slice(0, 4).map((s) => (
-                    <Button key={s.slug} asChild variant="outline" className="justify-start">
-                      <Link href={`/services/${s.slug}`}>{s.name}</Link>
+                    <Button key={s.slug} asChild variant="ghost" className="h-auto min-h-11 justify-start rounded-xl px-3 py-2.5 text-left motion-reduce:transition-none">
+                      <Link href={`/services/${s.slug}`}><span className="min-w-0 flex-1 truncate sm:whitespace-normal">{s.name}</span></Link>
                     </Button>
                   ))
                 ) : (
-                  <div className="text-muted-foreground text-sm">
+                  <div className="px-2 py-2 text-sm text-foreground/70">
                     Browse all services to learn more.
                   </div>
                 )}
-                <Button asChild variant="ghost" className="justify-start">
+                <Button asChild variant="ghost" className="justify-start motion-reduce:transition-none">
                   <Link href="/services">View all services</Link>
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </nav>
           </div>
         </Container>
       </section>

@@ -26,41 +26,49 @@ export default function FormsPage() {
         description="Book online or print a form."
       />
 
-      <section className="py-14 sm:py-20">
+      <section className="py-24 sm:py-32 lg:py-40">
         <Container>
-          <div className="grid gap-6 lg:grid-cols-3 lg:items-stretch">
-            <Card className="flex flex-col bg-primary text-primary-foreground">
-              <CardHeader>
-                <CardTitle className="text-primary-foreground">
+          <ol className="grid min-w-0 gap-6 lg:grid-cols-3 lg:items-stretch">
+            <li className="min-w-0">
+            <Card className="flex h-full flex-col rounded-[2rem] bg-primary p-8 text-primary-foreground sm:p-10">
+              <CardHeader className="p-0">
+                <span className="text-sm font-semibold text-primary-foreground/70 tabular-nums" aria-hidden="true">01</span>
+                <CardTitle className="text-primary-foreground mt-2 text-2xl">
                   Book appointment
                 </CardTitle>
-                <CardDescription className="text-primary-foreground/80">
+                <CardDescription className="text-primary-foreground/80 mt-2">
                   One question at a time.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="mt-auto flex flex-wrap gap-3">
+              <CardContent className="mt-auto flex flex-wrap gap-3 p-0 pt-6">
                 <BookAppointmentButton variant="secondary" />
               </CardContent>
             </Card>
+            </li>
 
-            <Card className="flex flex-col">
-              <CardHeader>
-                <CardTitle>Questions before booking?</CardTitle>
-                <CardDescription>We’re happy to help.</CardDescription>
+            <li className="min-w-0">
+            <Card className="flex h-full flex-col rounded-3xl p-8 sm:p-10">
+              <CardHeader className="p-0">
+                <span className="text-sm font-semibold text-foreground/50 tabular-nums" aria-hidden="true">02</span>
+                <CardTitle className="mt-2 text-2xl">Questions before booking?</CardTitle>
+                <CardDescription className="mt-2">We’re happy to help.</CardDescription>
               </CardHeader>
-              <CardContent className="mt-auto flex flex-wrap gap-3">
+              <CardContent className="mt-auto flex flex-wrap gap-3 p-0 pt-6">
                 <Button asChild>
                   <Link href="/contact">Contact the office</Link>
                 </Button>
               </CardContent>
             </Card>
+            </li>
 
-            <Card className="flex flex-col">
-              <CardHeader>
-                <CardTitle>New patient form</CardTitle>
-                <CardDescription>Prefer paper? Print this.</CardDescription>
+            <li className="min-w-0">
+            <Card className="flex h-full flex-col rounded-2xl p-8 sm:p-10">
+              <CardHeader className="p-0">
+                <span className="text-sm font-semibold text-foreground/50 tabular-nums" aria-hidden="true">03</span>
+                <CardTitle className="mt-2 text-2xl">New patient form</CardTitle>
+                <CardDescription className="mt-2">Prefer paper? Print this.</CardDescription>
               </CardHeader>
-              <CardContent className="mt-auto flex flex-wrap gap-3">
+              <CardContent className="mt-auto flex flex-wrap gap-3 p-0 pt-6">
                 <Button asChild>
                   <Link href="/forms/new-patient">Open new patient form</Link>
                 </Button>
@@ -69,9 +77,10 @@ export default function FormsPage() {
                 </Button>
               </CardContent>
             </Card>
-          </div>
+            </li>
+          </ol>
 
-          <p className="text-muted-foreground mt-8 max-w-3xl text-sm">
+          <p className="mt-10 max-w-3xl text-sm leading-relaxed text-foreground/70">
             For urgent symptoms, call 911 or visit an emergency room.
           </p>
         </Container>

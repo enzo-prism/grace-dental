@@ -55,39 +55,39 @@ export default function AboutPage() {
         }
       />
 
-      <section className="py-14 sm:py-20">
+      <section className="py-24 sm:py-32 lg:py-40">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <div className="space-y-6">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-14">
+            <div className="min-w-0 space-y-8">
               <div>
-              <h2 className="text-2xl font-semibold tracking-tight">Our approach</h2>
-              <div className="mt-3 text-lg font-semibold tracking-tight">{valuesHeadline}</div>
-              <p className="text-muted-foreground mt-3 text-sm leading-relaxed sm:text-base">
+              <h2 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">Our approach</h2>
+              <div className="mt-4 text-xl font-semibold tracking-tight text-balance">{valuesHeadline}</div>
+              <p className="mt-4 text-base leading-relaxed text-foreground/80 sm:text-lg">
                 {aboutMission}
               </p>
               </div>
 
-              <Card className="bg-muted/20">
-                <CardHeader className="gap-2">
-                  <CardTitle>What to expect</CardTitle>
+              <Card className="rounded-2xl bg-muted/20 p-8 sm:p-10">
+                <CardHeader className="gap-2 p-0">
+                  <CardTitle className="text-xl">What to expect</CardTitle>
                   <CardDescription>What your visit feels like.</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4 text-sm">
-                  <div className="grid gap-1">
+                <CardContent className="space-y-5 p-0 pt-6 text-sm sm:text-base">
+                  <div className="grid gap-1 border-t pt-5 first:border-t-0 first:pt-0">
                     <div className="font-medium">A warm welcome</div>
-                    <div className="text-muted-foreground">
+                    <div className="text-foreground/75">
                       We listen first.
                     </div>
                   </div>
-                  <div className="grid gap-1">
+                  <div className="grid gap-1 border-t pt-5">
                     <div className="font-medium">A thoughtful exam</div>
-                    <div className="text-muted-foreground">
+                    <div className="text-foreground/75">
                       We check what matters.
                     </div>
                   </div>
-                  <div className="grid gap-1">
+                  <div className="grid gap-1 border-t pt-5">
                     <div className="font-medium">Clear next steps</div>
-                    <div className="text-muted-foreground">
+                    <div className="text-foreground/75">
                       You leave with a plan.
                     </div>
                   </div>
@@ -95,8 +95,8 @@ export default function AboutPage() {
               </Card>
             </div>
 
-            <div className="grid gap-3">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-muted shadow-xs ring-1 ring-border">
+            <div className="grid min-w-0 gap-4">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-muted shadow-xs ring-1 ring-border">
                 <Image
                   src={aboutImages.patientComfort.src}
                   alt={aboutImages.patientComfort.alt}
@@ -104,14 +104,14 @@ export default function AboutPage() {
                   sizes="(min-width: 1024px) 560px, 100vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent p-5">
-                  <div className="w-fit rounded-full bg-background/90 px-3 py-1 text-xs font-medium shadow-xs ring-1 ring-border backdrop-blur-sm">
+                <div className="absolute inset-x-0 bottom-0 flex justify-start bg-gradient-to-t from-background/90 to-transparent p-5">
+                  <div className="w-fit rounded-full bg-background px-3 py-1 text-xs font-medium shadow-xs ring-1 ring-border">
                     Comfort-first care
                   </div>
                 </div>
               </div>
-              <div className="grid gap-3 sm:grid-cols-[0.75fr_1fr]">
-                <div className="relative min-h-44 overflow-hidden rounded-3xl bg-muted shadow-xs ring-1 ring-border">
+              <div className="grid gap-4 sm:grid-cols-[0.75fr_1fr]">
+                <div className="relative min-h-44 overflow-hidden rounded-2xl bg-muted shadow-xs ring-1 ring-border">
                   <Image
                     src={aboutImages.sonomaLandscape.src}
                     alt={aboutImages.sonomaLandscape.alt}
@@ -120,10 +120,10 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <Card className="justify-center bg-background">
-                  <CardHeader>
-                    <CardTitle className="text-base">Rooted in Santa Rosa</CardTitle>
-                    <CardDescription>
+                <Card className="justify-center rounded-2xl bg-background p-8">
+                  <CardHeader className="p-0">
+                    <CardTitle className="text-xl">Rooted in Santa Rosa</CardTitle>
+                    <CardDescription className="mt-2">
                       Local care with a calm Sonoma County feel.
                     </CardDescription>
                   </CardHeader>
@@ -132,29 +132,35 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {values.map((v) => (
-              <Card key={v.title}>
-                <CardHeader className="gap-2">
-                  <div className="bg-primary/10 text-primary flex size-10 items-center justify-center rounded-xl">
-                    <v.icon className="size-5" aria-hidden="true" />
+          <div className="mt-16 sm:mt-20">
+            <h3 className="max-w-2xl text-2xl font-semibold tracking-tight text-balance sm:text-3xl">What guides our care</h3>
+            <ol className="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+              {values.map((v, index) => (
+                <li key={v.title} className="flex min-w-0 gap-4 border-t-2 border-foreground/10 pt-6">
+                  <span className="text-sm font-semibold text-foreground/50 tabular-nums" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <v.icon className="size-4 shrink-0 text-primary" aria-hidden="true" />
+                      <h4 className="text-lg font-semibold tracking-tight">{v.title}</h4>
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground/75 sm:text-base">{v.description}</p>
                   </div>
-                  <CardTitle className="text-base">{v.title}</CardTitle>
-                  <CardDescription>{v.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
+                </li>
+              ))}
+            </ol>
           </div>
         </Container>
       </section>
 
       <section
         id="dr-tingjen-ji"
-        className="bg-muted/30 border-y py-14 sm:py-20 scroll-mt-24"
+        className="bg-muted/30 border-y py-24 sm:py-32 lg:py-40 scroll-mt-24"
       >
         <Container>
-          <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
-            <Card className="overflow-hidden bg-background">
+          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start lg:gap-14">
+            <Card className="overflow-hidden rounded-[2rem] bg-background">
               <div className="relative aspect-square bg-muted">
                 <Image
                   src={doctor.headshot.src}
@@ -164,13 +170,13 @@ export default function AboutPage() {
                   className="object-cover"
                 />
               </div>
-              <CardHeader className="gap-2">
-                <CardTitle>{doctor.name}</CardTitle>
+              <CardHeader className="gap-2 p-8">
+                <CardTitle className="text-xl">{doctor.name}</CardTitle>
                 <CardDescription>
                   Advanced training. Gentle chairside care.
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="px-8 pb-8">
                 <BookAppointmentButton
                   variant="outline"
                   className="w-full"
@@ -179,31 +185,29 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <div>
+            <div className="min-w-0">
               <div className="max-w-2xl">
-                <h2 className="text-2xl font-semibold tracking-tight">
+                <h2 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
                   Meet {doctor.name}
                 </h2>
-                <p className="text-muted-foreground mt-2 text-sm leading-relaxed sm:text-base">
+                <p className="mt-3 max-w-2xl text-base leading-relaxed text-foreground/80 sm:text-lg">
                   Dr. Ji combines advanced training with calm, clear care.
                 </p>
               </div>
 
-              <div className="mt-8 grid gap-4 md:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              <div className="mt-10 divide-y divide-border border-y border-border">
                 {doctor.sections.map((section) => (
-                  <Card key={section.title} className="bg-background">
-                    <CardHeader className="gap-2">
-                      <div className="bg-muted text-foreground flex size-10 items-center justify-center rounded-xl">
-                        <section.icon className="size-5" aria-hidden="true" />
-                      </div>
-                      <CardTitle className="text-base">{section.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-muted-foreground space-y-3 text-sm leading-relaxed">
+                  <div key={section.title} className="flex min-w-0 gap-4 py-6">
+                    <section.icon className="mt-1 size-5 shrink-0 text-primary" aria-hidden="true" />
+                    <div className="min-w-0">
+                      <h3 className="text-lg font-semibold tracking-tight">{section.title}</h3>
+                      <div className="mt-2 space-y-3 text-sm leading-relaxed text-foreground/75 sm:text-base">
                       {section.paragraphs.slice(0, 1).map((p) => (
                         <p key={p}>{p}</p>
                       ))}
-                    </CardContent>
-                  </Card>
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -211,19 +215,19 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-14 sm:py-20">
+      <section className="py-24 sm:py-32 lg:py-40">
         <Container>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight">Meet the Team</h2>
-              <p className="text-muted-foreground mt-2 max-w-2xl text-sm sm:text-base">
+          <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="min-w-0">
+              <h2 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">Meet the Team</h2>
+              <p className="mt-3 max-w-2xl text-base leading-relaxed text-foreground/80 sm:text-lg">
                 Friendly faces, simple communication.
               </p>
             </div>
-            <BookAppointmentButton variant="outline" className="w-fit" />
+            <BookAppointmentButton variant="outline" className="w-fit shrink-0" />
           </div>
 
-          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {team.map((member) => {
               const id = member.name
                 .toLowerCase()
@@ -231,9 +235,9 @@ export default function AboutPage() {
                 .replace(/(^-+|-+$)/g, "")
 
               return (
-                <Card key={member.name} id={id} className="scroll-mt-24">
-                <CardHeader className="gap-3">
-                  <div className="flex items-start gap-4">
+                <Card key={member.name} id={id} className="scroll-mt-24 rounded-3xl p-8 sm:p-10">
+                <CardHeader className="gap-3 p-0">
+                  <div className="flex min-w-0 items-start gap-4">
                     {member.headshot ? (
                       <Image
                         src={member.headshot.src}
@@ -241,16 +245,16 @@ export default function AboutPage() {
                         width={128}
                         height={128}
                         sizes="64px"
-                        className="ring-foreground/10 bg-muted size-16 shrink-0 rounded-xl object-cover ring-1"
+                        className="ring-foreground/10 bg-muted size-16 shrink-0 rounded-full object-cover ring-1"
                       />
                     ) : null}
-                    <div className="grid gap-1">
-                      <CardTitle className="text-base">{member.name}</CardTitle>
+                    <div className="grid min-w-0 gap-1">
+                      <CardTitle className="text-xl">{member.name}</CardTitle>
                       <CardDescription>{member.role}</CardDescription>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="text-muted-foreground space-y-3 text-sm leading-relaxed">
+                <CardContent className="space-y-3 p-0 pt-5 text-sm leading-relaxed text-foreground/75 sm:text-base">
                   {member.paragraphs.slice(0, 1).map((p) => (
                     <p key={p}>{p}</p>
                   ))}

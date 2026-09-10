@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Geist_Mono, Inter } from "next/font/google"
+import { Fraunces, Geist_Mono, Public_Sans } from "next/font/google"
 import Script from "next/script"
 
 import { Ga4LeadTracker } from "@/components/ga4-lead-tracker"
@@ -10,7 +10,13 @@ import { siteConfig, siteUrl } from "@/lib/site"
 
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
+const bodySans = Public_Sans({ subsets: ["latin"], variable: "--font-sans" })
+
+const displaySerif = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  style: ["normal", "italic"],
+})
 
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] })
 
@@ -95,7 +101,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${bodySans.variable} ${displaySerif.variable} ${geistMono.variable} antialiased`}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

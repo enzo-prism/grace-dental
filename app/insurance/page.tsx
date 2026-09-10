@@ -27,38 +27,34 @@ export default function InsurancePage() {
         description="We’ll help verify your plan."
       />
 
-      <section className="py-14 sm:py-20">
+      <section className="py-24 sm:py-32 lg:py-40">
         <Container>
-          <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
-            <Card>
-              <CardHeader>
-                <CardTitle>In-network plans</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {insuranceInNetwork.map((name) => (
-                    <Badge key={name} variant="secondary">
-                      {name}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-8">
+            <div className="min-w-0 rounded-3xl border bg-card p-8 sm:p-10">
+              <h2 className="text-2xl font-semibold tracking-tight text-balance">In-network plans</h2>
+              <div className="mt-6 flex min-w-0 flex-wrap gap-2">
+                {insuranceInNetwork.map((name) => (
+                  <Badge key={name} variant="secondary" className="min-w-0">
+                    {name}
+                  </Badge>
+                ))}
+              </div>
+            </div>
 
-            <Card className="bg-muted/20">
-              <CardHeader>
-                <CardTitle>Need verification?</CardTitle>
-                <CardDescription>{insuranceNote}</CardDescription>
+            <Card className="rounded-2xl bg-muted/20 p-8 sm:p-10">
+              <CardHeader className="p-0">
+                <CardTitle className="text-2xl">Need verification?</CardTitle>
+                <CardDescription className="mt-2 text-base leading-relaxed">{insuranceNote}</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-3 text-sm">
-                <div className="flex flex-wrap gap-3">
-                  <Button asChild>
-                    <a href={siteConfig.contact.phoneHref}>
+              <CardContent className="space-y-3 p-0 pt-6 text-sm">
+                <div className="flex min-w-0 flex-wrap gap-3">
+                  <Button asChild className="min-w-0">
+                    <a href={siteConfig.contact.phoneHref} className="min-w-0 truncate">
                       Call {siteConfig.contact.phoneDisplay}
                     </a>
                   </Button>
-                  <Button asChild variant="outline">
-                    <a href={`mailto:${siteConfig.contact.email}`}>Email us</a>
+                  <Button asChild variant="outline" className="min-w-0">
+                    <a href={`mailto:${siteConfig.contact.email}`} className="min-w-0 break-all">Email us</a>
                   </Button>
                 </div>
               </CardContent>

@@ -17,7 +17,7 @@ export default function RegistrationPage() {
   return (
     <div
       data-registration-page
-      className="from-muted/30 via-background to-background min-h-screen bg-gradient-to-br"
+      className="min-h-screen overflow-hidden bg-background"
     >
       <header className="sticky top-0 z-20 border-b bg-background/85 supports-backdrop-filter:backdrop-blur-md">
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
@@ -60,48 +60,31 @@ export default function RegistrationPage() {
       </header>
 
       <main className="mx-auto grid w-full max-w-6xl gap-8 px-4 py-8 sm:px-6 sm:py-10 lg:min-h-[calc(100vh-4rem)] lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8">
-        <section className="mx-auto w-full max-w-xl text-center lg:mx-0 lg:text-left">
-          <div className="mx-auto hidden w-fit rounded-[2rem] bg-white p-4 shadow-xs ring-1 ring-border lg:mx-0 lg:inline-flex">
-            <Image
-              src={siteConfig.logo.src}
-              alt={siteConfig.logo.alt}
-              width={668}
-              height={566}
-              priority
-              sizes="128px"
-              className="h-28 w-auto"
-            />
-          </div>
-
-          <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-5xl lg:mt-8">
+        <section className="mx-auto w-full max-w-xl min-w-0 text-center lg:mx-0 lg:text-left">
+          <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
             Request an appointment.
           </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-lg text-base leading-relaxed sm:text-lg lg:mx-0">
+          <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-foreground/80 sm:text-lg lg:mx-0">
             Pick a preferred date and time. We’ll review and confirm.
           </p>
 
-          <div className="mx-auto mt-8 flex max-w-lg flex-wrap justify-center gap-2 text-sm lg:mx-0 lg:justify-start">
-            <div className="rounded-full bg-background/80 px-3 py-1.5 shadow-xs ring-1 ring-border">
-              ~2 minutes
-            </div>
-            <div className="rounded-full bg-background/80 px-3 py-1.5 shadow-xs ring-1 ring-border">
-              No long forms
-            </div>
-            <div className="rounded-full bg-background/80 px-3 py-1.5 shadow-xs ring-1 ring-border">
-              Help:{" "}
+          <ol className="mx-auto mt-8 flex max-w-lg flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-foreground/75 lg:mx-0 lg:justify-start">
+            <li className="flex items-center gap-2"><span className="font-semibold text-foreground/50 tabular-nums" aria-hidden="true">01</span>~2 minutes</li>
+            <li className="flex items-center gap-2"><span className="font-semibold text-foreground/50 tabular-nums" aria-hidden="true">02</span>No long forms</li>
+            <li className="flex min-w-0 items-center gap-2"><span className="font-semibold text-foreground/50 tabular-nums" aria-hidden="true">03</span><span className="min-w-0">Help:{" "}
               <a
                 href={siteConfig.contact.phoneHref}
                 className="font-medium underline underline-offset-4"
               >
                 {siteConfig.contact.phoneDisplay}
-              </a>
-            </div>
-          </div>
+              </a></span>
+            </li>
+          </ol>
         </section>
 
-        <section className="mx-auto w-full max-w-xl" aria-label="Book appointment form">
+        <section className="mx-auto w-full max-w-xl min-w-0" aria-label="Book appointment form">
           <RegistrationForm />
-          <p className="text-muted-foreground mt-4 text-center text-sm">
+          <p className="mt-4 text-center text-sm text-foreground/70">
             Prefer to book instantly?{" "}
             <a
               href={siteConfig.zocdocHref}

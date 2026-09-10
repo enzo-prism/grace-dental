@@ -90,7 +90,7 @@ function ContactForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="grid min-w-0 gap-6">
         <div className="hidden" aria-hidden="true">
           <label htmlFor="contact-website">
             Leave this field blank
@@ -103,8 +103,8 @@ function ContactForm() {
           </label>
         </div>
         <FieldGroup>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Field>
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+            <Field className="min-w-0">
               <FieldLabel htmlFor="contact-name">Full name</FieldLabel>
               <Input
                 id="contact-name"
@@ -127,8 +127,8 @@ function ContactForm() {
             </Field>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Field>
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+            <Field className="min-w-0">
               <FieldLabel htmlFor="contact-phone">Phone (optional)</FieldLabel>
               <Input
                 id="contact-phone"

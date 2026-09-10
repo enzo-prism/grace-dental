@@ -34,7 +34,9 @@ export default function ReviewsPage() {
           </>
         }
       />
-      <Reviews limit={12} />
+      <div className="pb-24 sm:pb-32 lg:pb-40 [&>section]:py-24 [&>section]:sm:py-32 [&>section]:lg:py-40">
+        <Reviews limit={12} />
+      </div>
     </div>
   )
 }

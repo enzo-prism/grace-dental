@@ -43,24 +43,28 @@ const headerNavItems = siteConfig.nav.filter(
 
 function SiteHeader() {
   return (
-    <header className="bg-background/80 supports-backdrop-filter:backdrop-blur-sm sticky top-0 z-40 border-b">
+    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-md">
       <a
         href="#main-content"
-        className="bg-background text-foreground focus:ring-ring/50 sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 rounded-md px-3 py-2 text-sm font-medium shadow-xs focus:ring-[3px]"
+        className="sr-only rounded-md bg-background px-3 py-2 text-sm font-medium text-foreground shadow-xs focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:ring-[3px] focus:ring-ring/50"
       >
         Skip to content
       </a>
-      <Container className="flex items-center justify-between gap-4 py-3">
-        <Link href="/" className="leading-tight">
-          <span className="block text-sm font-semibold sm:text-base">
+      <Container className="flex min-w-0 items-center justify-between gap-3 py-3 sm:gap-4">
+        <Link
+          href="/"
+          className="min-w-0 leading-tight"
+          aria-label={`${siteConfig.name} — home`}
+        >
+          <span className="font-display block truncate text-lg font-semibold tracking-tight sm:text-xl">
             {siteConfig.name}
           </span>
-          <span className="text-muted-foreground block text-xs sm:text-sm">
+          <span className="block truncate text-xs text-foreground/65 sm:text-sm">
             {siteConfig.locationShort}
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden min-w-0 items-center gap-1 md:flex" aria-label="Primary">
           {headerNavItems.map((item) => {
             const Icon = navIcons[item.href]
 
@@ -75,7 +79,7 @@ function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <BookAppointmentButton
             size="sm"
             label="Book"
@@ -92,14 +96,14 @@ function SiteHeader() {
               <Button
                 variant="outline"
                 size="icon"
-                className="size-11 md:hidden"
+                className="size-11 rounded-full md:hidden"
                 aria-label="Open menu"
               >
                 <MenuIcon className="size-4" aria-hidden="true" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-60">
-              <div className="text-muted-foreground flex items-center gap-2 px-2 py-1 text-xs">
+            <DropdownMenuContent align="end" className="w-60 rounded-2xl">
+              <div className="flex items-center gap-2 px-2 py-1 text-xs text-foreground/65">
                 <MapPinIcon className="size-4" aria-hidden="true" />
                 {siteConfig.locationShort}
               </div>
@@ -130,7 +134,11 @@ function SiteHeader() {
                 </a>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <a href={siteConfig.googleMapsHref} target="_blank" rel="noreferrer">
+                <a
+                  href={siteConfig.googleMapsHref}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <GoogleMapsIcon />
                   Open in Maps
                 </a>

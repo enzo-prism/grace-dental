@@ -38,16 +38,16 @@ export default function NewPatientFormPage() {
         }
       />
 
-      <section className="py-14 sm:py-20">
-        <Container className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Patient information</CardTitle>
+      <section className="py-24 sm:py-32 lg:py-40">
+        <Container className="max-w-4xl space-y-8">
+          <Card className="rounded-3xl p-8 sm:p-10">
+            <CardHeader className="p-0">
+              <CardTitle className="text-2xl">Patient information</CardTitle>
               <CardDescription>
                 Please complete what you can. You may also fill this out in-office.
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-0 pt-6">
               <FieldGroup>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Field>
@@ -94,11 +94,11 @@ export default function NewPatientFormPage() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Emergency contact</CardTitle>
+          <Card className="rounded-2xl p-8 sm:p-10">
+            <CardHeader className="p-0">
+              <CardTitle className="text-2xl">Emergency contact</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-0 pt-6">
               <FieldGroup>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Field>
@@ -118,14 +118,14 @@ export default function NewPatientFormPage() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Insurance information</CardTitle>
+          <Card className="rounded-3xl p-8 sm:p-10">
+            <CardHeader className="p-0">
+              <CardTitle className="text-2xl">Insurance information</CardTitle>
               <CardDescription>
                 Please bring your insurance card. We’ll verify that your plan type is in network.
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-0 pt-6">
               <FieldGroup>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Field>
@@ -151,14 +151,14 @@ export default function NewPatientFormPage() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Medical & dental history</CardTitle>
+          <Card className="rounded-[2rem] p-8 sm:p-10">
+            <CardHeader className="p-0">
+              <CardTitle className="text-2xl">Medical & dental history</CardTitle>
               <CardDescription>
                 For your privacy, please avoid emailing sensitive medical details. This form is intended to be printed.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 p-0 pt-6">
               <FieldGroup>
                 <Field>
                   <FieldLabel htmlFor="np-concerns">Reason for visit / concerns</FieldLabel>
@@ -193,14 +193,14 @@ export default function NewPatientFormPage() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Signature</CardTitle>
+          <Card className="rounded-2xl p-8 sm:p-10">
+            <CardHeader className="p-0">
+              <CardTitle className="text-2xl">Signature</CardTitle>
               <CardDescription>
                 By signing, you confirm the information provided is accurate to the best of your knowledge.
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-0 pt-6">
               <FieldGroup>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Field>
@@ -216,14 +216,14 @@ export default function NewPatientFormPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-muted/20">
-            <CardHeader>
-              <CardTitle>Need help?</CardTitle>
+          <Card className="rounded-3xl bg-muted/20 p-8 sm:p-10">
+            <CardHeader className="p-0">
+              <CardTitle className="text-2xl">Need help?</CardTitle>
               <CardDescription>
                 Book online, or call/email us and we’ll be happy to assist.
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-wrap gap-3">
+            <CardContent className="flex min-w-0 flex-wrap gap-3 p-0 pt-6">
               <BookAppointmentButton />
               <Button asChild variant="outline">
                 <a href={siteConfig.contact.phoneHref}>
