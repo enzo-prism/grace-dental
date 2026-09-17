@@ -127,6 +127,12 @@ export const insuranceInNetwork = [
   "MetLife Insurance Company (PDP Plus Plans)",
   "Ameritas Life Insurance Corp",
   "Humana",
+  "Cigna Dental",
+  "United Concordia",
+  "The Standard",
+  "Physicians Mutual",
+  "Sunlife",
+  "Solstice",
 ] as const
 
 export const insuranceNote =
